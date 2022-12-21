@@ -1,0 +1,346 @@
+@use './partials/navbar.scss';
+@use './mixins/colors.scss'as c;
+@use './mixins/animations.scss';
+@use './global.scss';
+#app {
+    height: 100vh;
+}
+
+.school-container_os {
+    width: 100%;
+    min-height: 93.4vh;
+    background-color: #120222;
+}
+
+#app-main {
+    height: 100%;
+}
+
+#apps_os {
+    //width: 100%;
+    padding: 10px;
+    .app-os {
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 10px;
+        cursor: pointer;
+        img {
+            width: 64px;
+            height: 63px;
+            border-radius: 14px;
+            margin: 0 auto;
+        }
+        p {
+            color: antiquewhite;
+            font-size: 14px;
+            text-align: center;
+            margin: 5px 0
+        }
+    }
+}
+
+#taskbar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    background-color: rgb(15, 144, 165);
+    box-shadow: 0 -3px 5px rgba(46, 255, 74, .3), 0 -5px 10px rgba(46, 255, 74, .3);
+}
+
+.school-os-wd {
+    background-color: aliceblue;
+    position: absolute;
+    top: 20vh;
+    left: 20%;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    min-width: 400px;
+    min-height: 61vh;
+    border: 1px solid #EEE;
+    border-radius: 10px;
+    overflow: hidden;
+    resize: both;
+    transition-property: height, width, top, left;
+    transition-duration: .1s;
+    transition-timing-function: ease-out;
+    .window-bar {
+        width: 100%;
+        display: flex;
+        background: black;
+        color: white;
+        align-items: center;
+        padding: 0 10px;
+        box-sizing: border-box;
+        cursor: move;
+        cursor: grab;
+        .buttons {
+            display: flex;
+            button {
+                cursor: pointer;
+                height: 13px;
+                border: none;
+                outline: none;
+                width: 13px;
+                border-radius: 50%;
+                margin-right: 10px;
+                transition: all .2s ease-in-out;
+                padding: 0;
+                i {
+                    font-size: 10px;
+                    margin: 0 auto;
+                    display: none;
+                }
+                &:hover>i {
+                    display: block;
+                }
+            }
+        }
+        &-close {
+            background-color: c.$red;
+        }
+        &-minimize {
+            background-color: c.$yellow;
+        }
+        &-maximize {
+            background-color: c.$green;
+        }
+        &:active {
+            cursor: grabbing;
+        }
+        .brand {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 32px;
+            }
+            p {
+                margin-left: 9px;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+#os-menu {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 3px 5px 10px rgba(255, 255, 255, .3), 6px 10px 10px rgba(255, 255, 255, .3);
+    ul {
+        li {
+            color: rgb(46, 26, 3);
+            padding: 10px 0;
+            &:hover {
+                background: antiquewhite;
+            }
+        }
+    }
+    &.active {
+        display: block;
+    }
+}
+
+
+/* The switch - the box around the slider */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+
+/* Hide default HTML checkbox */
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+
+/* The slider */
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+// body {
+//     margin: 0;
+//     padding: 0;
+//     min-height: 100vh;
+//     overflow: hidden;
+//     .drag {
+//         user-select: none;
+//         .draggable {
+//             cursor: grabbing;
+//         }
+//     }
+//     header {
+//         .center-side {
+//             justify-content: center;
+//         }
+//     }
+//     main {
+//         background: url(https://images.pexels.com/photos/1743366/pexels-photo-1743366.jpeg?auto=compress&cs=tinysrgb) center center no-repeat;
+//         background-size: cover;
+//         // height: 100%;
+//         .homepage {
+//             display: grid;
+//             grid-template-columns: repeat(8, 1fr);
+//             grid-gap: 1rem;
+//             place-items: center;
+//             padding: 50px;
+//             @media screen and (max-width: 768px) {
+//                 grid-template-columns: repeat(4, 1fr);
+//                 padding: 25px;
+//             }
+//         }
+//         .favourite-apps {
+//             position: absolute;
+//             bottom: 30px;
+//             width: 100vw;
+//             display: grid;
+//             grid-template-columns: repeat(4, 1fr);
+//             place-items: center;
+//             >.application {
+//                 transform: scale(0.9);
+//                 border-radius: 100px;
+//             }
+//         }
+//         .application {
+//             height: 60px;
+//             width: 60px;
+//             border-radius: 12px;
+//             // background: url(''); // Icon here
+//             background: c.$blue;
+//             cursor: pointer;
+//             $app-colors: c.$wc-1, c.$wc-2, c.$wc-3, c.$wc-4;
+//             @for $i from 1 through length($app-colors) {
+//                 &:nth-child(3n + #{$i}) {
+//                     background: nth($app-colors, $i);
+//                 }
+//             }
+//             &:hover {
+//                 transform: scale(1.1);
+//                 filter: brightness(1.2);
+//             }
+//         }
+//         .window-app {
+//             border-radius: 4px;
+//             background: white;
+//             width: 25%;
+//             height: 25%;
+//             position: absolute;
+//             resize: both;
+//             overflow: hidden;
+//             // mix-blend-mode: hard-light;
+//             border-radius: 0.3em;
+//             z-index: 1;
+//             $window-colors: c.$wc-1, c.$wc-2, c.$wc-3, c.$wc-4;
+//             @for $i from 1 through length($window-colors) {
+//                 &#window-#{$i} {
+//                     background: nth($window-colors, $i);
+//                     transition: background-color 0.2s ease;
+//                 }
+//             }
+//             &.active {
+//                 z-index: 99;
+//                 border: 1px solid c.$black;
+//             }
+//             .maximize {
+//                 width: 100vw;
+//                 height: 100vh;
+//                 top: 0;
+//                 left: 0;
+//             }
+//             .draggable {
+//                 display: flex;
+//                 cursor: grab;
+//                 width: 100%;
+//                 height: 40px;
+//             }
+//             &-navigation {
+//                 position: absolute;
+//                 top: 0;
+//                 left: 0;
+//                 background: black;
+//                 color: white;
+//                 align-items: center;
+//                 padding: 0 10px;
+//                 box-sizing: border-box;
+//                 &-button {
+//                     cursor: pointer;
+//                     height: 15px;
+//                     width: 15px;
+//                     border-radius: 50%;
+//                     margin-right: 10px;
+//                     transition: all .2s ease-in-out;
+//                 }
+//                 &-close {
+//                     background-color: c.$red;
+//                 }
+//                 &-minimize {
+//                     background-color: c.$yellow;
+//                 }
+//                 &-maximize {
+//                     background-color: c.$green;
+//                 }
+//             }
+//         }
+//     }
+// }

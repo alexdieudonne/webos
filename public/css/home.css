@@ -1,0 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap");
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Palette 
+======================= */
+/* Window Colors
+======================= */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+body .navbar {
+  height: 60px;
+  margin: 0 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
+body .navbar > div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+body .navbar > div.left-side {
+  justify-content: flex-start;
+}
+body .navbar > div.right-side {
+  justify-content: flex-end;
+}
+body .navbar > div.right-side .battery-label {
+  margin: 0 4px 0 16px;
+}
+body .navbar > div.right-side .battery-icon {
+  object-fit: contain;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(2.5);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes close {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+#app {
+  height: 100vh;
+}
+
+.school-container_os {
+  width: 100%;
+  min-height: 93.4vh;
+  background-color: #120222;
+}
+
+#app-main {
+  height: 100%;
+}
+
+#apps_os {
+  padding: 10px;
+}
+#apps_os .app-os {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+#apps_os .app-os img {
+  width: 64px;
+  height: 63px;
+  border-radius: 14px;
+  margin: 0 auto;
+}
+#apps_os .app-os p {
+  color: antiquewhite;
+  font-size: 14px;
+  text-align: center;
+  margin: 5px 0;
+}
+
+#taskbar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 45px;
+  background-color: rgb(15, 144, 165);
+  box-shadow: 0 -3px 5px rgba(46, 255, 74, 0.3), 0 -5px 10px rgba(46, 255, 74, 0.3);
+}
+
+.school-os-wd {
+  background-color: aliceblue;
+  position: absolute;
+  top: 20vh;
+  left: 20%;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  min-width: 400px;
+  min-height: 61vh;
+  border: 1px solid #EEE;
+  border-radius: 10px;
+  overflow: hidden;
+  resize: both;
+  transition-property: height, width, top, left;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-out;
+}
+.school-os-wd .window-bar {
+  width: 100%;
+  display: flex;
+  background: black;
+  color: white;
+  align-items: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+  cursor: move;
+  cursor: grab;
+}
+.school-os-wd .window-bar .buttons {
+  display: flex;
+}
+.school-os-wd .window-bar .buttons button {
+  cursor: pointer;
+  height: 13px;
+  border: none;
+  outline: none;
+  width: 13px;
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: all 0.2s ease-in-out;
+  padding: 0;
+}
+.school-os-wd .window-bar .buttons button i {
+  font-size: 10px;
+  margin: 0 auto;
+  display: none;
+}
+.school-os-wd .window-bar .buttons button:hover > i {
+  display: block;
+}
+.school-os-wd .window-bar-close {
+  background-color: #ff5f58;
+}
+.school-os-wd .window-bar-minimize {
+  background-color: #fdbc30;
+}
+.school-os-wd .window-bar-maximize {
+  background-color: #28c841;
+}
+.school-os-wd .window-bar:active {
+  cursor: grabbing;
+}
+.school-os-wd .window-bar .brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.school-os-wd .window-bar .brand img {
+  width: 32px;
+}
+.school-os-wd .window-bar .brand p {
+  margin-left: 9px;
+  font-size: 14px;
+}
+
+#os-menu {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 3px 5px 10px rgba(255, 255, 255, 0.3), 6px 10px 10px rgba(255, 255, 255, 0.3);
+}
+#os-menu ul li {
+  color: rgb(46, 26, 3);
+  padding: 10px 0;
+}
+#os-menu ul li:hover {
+  background: antiquewhite;
+}
+#os-menu.active {
+  display: block;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*# sourceMappingURL=home.css.map */
