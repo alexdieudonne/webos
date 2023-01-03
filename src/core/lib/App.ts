@@ -18,7 +18,4 @@ export default class App {
 
 function initApp(){
   (apps)
-  // console.log('====================================');
-  // console.log(Object.entries(apps));
-  // console.log('====================================');
 }

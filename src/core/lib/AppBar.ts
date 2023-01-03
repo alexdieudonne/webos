@@ -1,4 +1,4 @@
-import { OS } from '../index'
+import { OS } from '../type'
 import "../scss/lock.scss"
 
 

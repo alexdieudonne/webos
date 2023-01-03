@@ -1,4 +1,4 @@
-import { OS } from '../index'
+import { OS } from '../type'
 import * as apps from '../apps/index'
 import "../scss/lock.scss"
 

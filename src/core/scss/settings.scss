@@ -1,7 +1,15 @@
 .settings {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     section {
+        width: 80%;
+        max-width: 300px;
         .bloc-label {
             display: flex;
+            margin-top: 10px;
+            align-items: center;
+            justify-content: space-between;
         }
         h5 {
             margin: 0;
