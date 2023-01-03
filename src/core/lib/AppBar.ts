@@ -1,5 +1,6 @@
 import { OS } from '../type'
 import "../scss/lock.scss"
+import "../apps/clock"
 
 
 export default class AppBar extends OS {
@@ -10,6 +11,9 @@ export default class AppBar extends OS {
                 <div class="navbar">
                     <div class="left-side">
                         <span class="network-name">P. Telecom</span>
+                    </div>
+                    <div class="center-side">
+                        <div class="current-time">12:00</div>
                     </div>
                     <div class="right-side">
                         <img src="/img/Network.png" alt="Network icon">
