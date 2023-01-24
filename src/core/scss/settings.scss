@@ -1,18 +1,26 @@
+@use './mixins/utils' as u;
+
 .settings {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    @include u.flex($justify-content: center, $align-items: center, $flex-direction: column);
+
     section {
         width: 80%;
         max-width: 300px;
+
         .bloc-label {
-            display: flex;
-            margin-top: 10px;
-            align-items: center;
-            justify-content: space-between;
+            @include u.flex($justify-content: space-between, $align-items: center);
+            margin-top: 0.5rem;
         }
+
         h5 {
             margin: 0;
+        }
+
+        input {
+            @include u.border-radius(0.5rem);
+            padding: 0.5rem;
+            width: 100%;
+            border: none;
         }
     }
 }

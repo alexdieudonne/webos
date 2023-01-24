@@ -1,6 +1,4 @@
 import { OS } from '../type'
-import "../scss/lock.scss"
-
 
 export default class Header extends OS {
 

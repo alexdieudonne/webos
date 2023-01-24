@@ -3,28 +3,23 @@ let timer: number = 0;
 
 const updateCurrentTime = (): void => {
     
-    
     document.addEventListener("DOMContentLoaded", () => {
-        // Query Selector for the clock
         const clock = document.querySelector('.current-time') as HTMLDivElement;
-        // If the clock exists, update the clock
         if (clock) {
-            // Fix the format if the time is less than 10
-            
-            // Update the clock
             setInterval(
                 () => {
                     const date = new Date();
-                    let hour: number  = date.getHours();
-                    let minute: number  = date.getMinutes();
-                    let second: number  = date.getSeconds();
+                    let hours: number  = date.getHours();
+                    let minutes: number  = date.getMinutes();
+                    let seconds: number  = date.getSeconds();
 
-                    const myhour : String | number = hour < 10 ? `0${hour}` : hour;
-                    const myminute : String | number = minute < 10 ? `0${minute}` : minute;
-                    const mysecond : String | number = second < 10 ? `0${second}` : second;
-                    console.log(`${myhour}:${myminute}:${mysecond}`)
+                    const currentHours : String | number = hours < 10 ? `0${hours}` : hours;
+                    const currentMinutes : String | number = minutes < 10 ? `0${minutes}` : minutes;
+                    const currentSeconds : String | number = seconds < 10 ? `0${seconds}` : seconds;
 
-                    clock.textContent = `${myhour}:${myminute}:${mysecond}`;
+                    // TODO: Check if the user wants to display seconds in the settings
+                    // clock.textContent = `${currentHours}:${currentMinutes}:${currentSeconds}`;
+                    clock.textContent = `${currentHours}:${currentMinutes}`;
                 }, 1000
             )
         }

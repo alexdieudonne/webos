@@ -4,7 +4,7 @@ import "../scss/calculator.scss"
 export class Calculator extends AppHandler {
 
     constructor() {
-        super({ icon: "/img/icons/calculator.png", name: "Calculator", handler: calculatorHandle });
+        super({ icon: "/img/icons/calculator.svg", name: "Calculator", handler: calculatorHandle });
     }
 
     render() {

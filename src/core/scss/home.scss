@@ -1,127 +1,147 @@
+@use './global.scss' as g;
 @use './partials/navbar.scss';
-@use './mixins/colors.scss'as c;
-@use './mixins/animations.scss';
-@use './global.scss';
+@use './mixins/colors.scss' as c;
+@use './mixins/utils' as u;
+
 #app {
+    @include u.reset-body();
     height: 100vh;
-}
 
-.school-container_os {
-    width: 100%;
-    min-height: 93.4vh;
-    background-color: #120222;
-}
-
-#app-main {
-    height: 100%;
-    overflow: scroll;
-}
-
-#apps_os {
-    //width: 100%;
-    padding: 10px;
-    .app-os {
-        width: 100px;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        margin-bottom: 10px;
-        cursor: pointer;
-        img {
-            width: 64px;
-            height: 63px;
-            border-radius: 14px;
-            margin: 0 auto;
+    &-main {
+        @include u.full-size();
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            display: none;
         }
-        p {
-            color: antiquewhite;
-            font-size: 14px;
-            text-align: center;
-            margin: 5px 0
+
+        > div {
+            @include u.full-size();
+            padding: 1rem 0 5rem 0;
         }
     }
-}
 
-#taskbar {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 45px;
-    background-color: rgb(15, 144, 165);
-    box-shadow: 0 -3px 5px rgba(46, 255, 74, .3), 0 -5px 10px rgba(46, 255, 74, .3);
-}
+    &s_os {
+        padding: 1rem;
 
-.school-os-wd {
-    background-color: aliceblue;
-    position: absolute;
-    top: 20vh;
-    left: 20%;
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    min-width: 400px;
-    min-height: 61vh;
-    border: 1px solid #EEE;
-    border-radius: 10px;
-    overflow: hidden;
-    resize: both;
-    transition-property: height, width, top, left;
-    transition-duration: .1s;
-    transition-timing-function: ease-out;
-    .window-bar {
-        width: 100%;
-        display: flex;
-        background: black;
-        color: white;
-        align-items: center;
-        padding: 0 10px;
-        box-sizing: border-box;
-        cursor: move;
-        cursor: grab;
-        .buttons {
-            display: flex;
-            button {
-                cursor: pointer;
-                height: 13px;
-                border: none;
-                outline: none;
-                width: 13px;
-                border-radius: 50%;
-                margin-right: 10px;
-                transition: all .2s ease-in-out;
-                padding: 0;
-                i {
-                    font-size: 10px;
-                    margin: 0 auto;
-                    display: none;
-                }
-                &:hover>i {
-                    display: block;
-                }
-            }
-        }
-        &-close {
-            background-color: c.$red;
-        }
-        &-minimize {
-            background-color: c.$yellow;
-        }
-        &-maximize {
-            background-color: c.$green;
-        }
-        &:active {
-            cursor: grabbing;
-        }
-        .brand {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .application {
+            @include u.flex($justify-content: center, $align-items: center, $flex-direction: column);
+            padding: 0.5rem 0;
+            margin-bottom: 10px;
+            max-width: 100px;
+            cursor: pointer;
+
             img {
-                width: 32px;
+                @include u.set-size(5rem);
+                @include u.border-radius(1rem);
+                transition: all 0.2s ease-in-out;
+                margin: 0 auto;
+                @media screen and (max-width: g.$mobile) {
+                    @include u.set-size(4rem);
+                }
             }
+
             p {
-                margin-left: 9px;
-                font-size: 14px;
+                color: c.$white;
+                width: 5.5rem;
+                margin: 1rem 0 0 0;
+                text-align: center;
+                word-wrap: break-word;
+                @media screen and (max-width: g.$mobile) {
+                    margin: .75rem 0 0 0;
+                }
+            }
+        }
+    }
+
+    .school-container_os {
+        min-height: 93.4vh;
+        @include u.full-size();
+        background-color: #10111d;
+
+        // TODO: Add the background-image using wallpaper settings
+        background: url('https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1217&q=80');
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+    }
+
+    .school-os-wd {
+        @include u.flex($flex-direction: column);
+        @include u.border-radius(1rem);
+        position: absolute;
+        top: 20vh;
+        left: 20%;
+        min-width: 400px;
+        min-height: 60vh;
+        background-color: c.$white;
+        overflow: hidden;
+        resize: both;
+
+        .window-bar {
+            @include u.flex($justify-content: space-between, $align-items: center);
+            background: c.$black;
+            color: white;
+            padding: 0 1rem;
+            box-sizing: border-box;
+            cursor: grab;
+
+            .buttons {
+                display: flex;
+
+                button {
+                    @include u.set-size(1.25rem);
+                    @include u.reset-appearance();
+                    @include u.border-radius(100%);
+                    transition: all .2s ease-in-out;
+                    margin-right: 10px;
+                    cursor: pointer;
+                    padding: 0;
+
+                    &:hover > i {
+                        display: block;
+                    }
+
+                    i {
+                        font-size: 1rem;
+                        margin: 0 auto;
+                        display: none;
+                        line-height: inherit;
+                    }
+                }
+            }
+
+            &-close {
+                background-color: c.$red;
+            }
+
+            &-minimize {
+                background-color: c.$yellow;
+            }
+
+            &-maximize {
+                background-color: c.$green;
+            }
+
+            &:active {
+                cursor: grabbing;
+            }
+
+            .brand {
+                @include u.flex($justify-content: center, $align-items: center);
+                width: -webkit-fill-available;
+                position: relative;
+                left: -2rem;
+
+                img {
+                    width: 2rem;
+                }
+
+                p {
+                    margin-left: 1rem;
+                    font-size: 1rem;
+                }
             }
         }
     }
@@ -219,129 +239,3 @@ input:checked+.slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
-
-// body {
-//     margin: 0;
-//     padding: 0;
-//     min-height: 100vh;
-//     overflow: hidden;
-//     .drag {
-//         user-select: none;
-//         .draggable {
-//             cursor: grabbing;
-//         }
-//     }
-//     header {
-//         .center-side {
-//             justify-content: center;
-//         }
-//     }
-//     main {
-//         background: url(https://images.pexels.com/photos/1743366/pexels-photo-1743366.jpeg?auto=compress&cs=tinysrgb) center center no-repeat;
-//         background-size: cover;
-//         // height: 100%;
-//         .homepage {
-//             display: grid;
-//             grid-template-columns: repeat(8, 1fr);
-//             grid-gap: 1rem;
-//             place-items: center;
-//             padding: 50px;
-//             @media screen and (max-width: 768px) {
-//                 grid-template-columns: repeat(4, 1fr);
-//                 padding: 25px;
-//             }
-//         }
-//         .favourite-apps {
-//             position: absolute;
-//             bottom: 30px;
-//             width: 100vw;
-//             display: grid;
-//             grid-template-columns: repeat(4, 1fr);
-//             place-items: center;
-//             >.application {
-//                 transform: scale(0.9);
-//                 border-radius: 100px;
-//             }
-//         }
-//         .application {
-//             height: 60px;
-//             width: 60px;
-//             border-radius: 12px;
-//             // background: url(''); // Icon here
-//             background: c.$blue;
-//             cursor: pointer;
-//             $app-colors: c.$wc-1, c.$wc-2, c.$wc-3, c.$wc-4;
-//             @for $i from 1 through length($app-colors) {
-//                 &:nth-child(3n + #{$i}) {
-//                     background: nth($app-colors, $i);
-//                 }
-//             }
-//             &:hover {
-//                 transform: scale(1.1);
-//                 filter: brightness(1.2);
-//             }
-//         }
-//         .window-app {
-//             border-radius: 4px;
-//             background: white;
-//             width: 25%;
-//             height: 25%;
-//             position: absolute;
-//             resize: both;
-//             overflow: hidden;
-//             // mix-blend-mode: hard-light;
-//             border-radius: 0.3em;
-//             z-index: 1;
-//             $window-colors: c.$wc-1, c.$wc-2, c.$wc-3, c.$wc-4;
-//             @for $i from 1 through length($window-colors) {
-//                 &#window-#{$i} {
-//                     background: nth($window-colors, $i);
-//                     transition: background-color 0.2s ease;
-//                 }
-//             }
-//             &.active {
-//                 z-index: 99;
-//                 border: 1px solid c.$black;
-//             }
-//             .maximize {
-//                 width: 100vw;
-//                 height: 100vh;
-//                 top: 0;
-//                 left: 0;
-//             }
-//             .draggable {
-//                 display: flex;
-//                 cursor: grab;
-//                 width: 100%;
-//                 height: 40px;
-//             }
-//             &-navigation {
-//                 position: absolute;
-//                 top: 0;
-//                 left: 0;
-//                 background: black;
-//                 color: white;
-//                 align-items: center;
-//                 padding: 0 10px;
-//                 box-sizing: border-box;
-//                 &-button {
-//                     cursor: pointer;
-//                     height: 15px;
-//                     width: 15px;
-//                     border-radius: 50%;
-//                     margin-right: 10px;
-//                     transition: all .2s ease-in-out;
-//                 }
-//                 &-close {
-//                     background-color: c.$red;
-//                 }
-//                 &-minimize {
-//                     background-color: c.$yellow;
-//                 }
-//                 &-maximize {
-//                     background-color: c.$green;
-//                 }
-//             }
-//         }
-//     }
-// }

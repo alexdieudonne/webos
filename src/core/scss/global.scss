@@ -1,9 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
 
+/* Breakpoints
+======================= */
+$mobile: 768px;
+$tablet: 1024px;
+$desktop: 1200px;
+
+/* CSS
+======================= */
 body, html {
     margin: 0;
     padding: 0;
+    overflow: hidden;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', 'Roboto', sans-serif;
 }
 

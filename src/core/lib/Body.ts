@@ -1,25 +1,17 @@
 import { OS } from '../type'
-import * as apps from '../apps/index'
-import "../scss/lock.scss"
-
 
 export default class Body extends OS {
-
-
     render() {
         return (
             `<main class="school-container_os">
                 <div id="apps_os">
-                   
                 </div>
-     
             </main>
             
             <div class="window school-os-wd" id="school-os-wd" draggable="true">
                 <div class="window-bar">
                     
-                   <div class='buttons'>
-                    
+                    <div class='buttons'>
                         <button id="cross" class="window-bar-close">
                             <i class="fa fa-times"></i>
                         </button>
@@ -29,9 +21,9 @@ export default class Body extends OS {
                         <button id="maximize" class="window-bar-maximize">
                             <i class="far fa-window-maximize"></i>
                         </button>
-                   </div>
-                   <div class="brand">
-                    <img src="/img/icons/safari.png" alt="safari" />
+                    </div>
+                    <div class="brand">
+                        <img src="/img/icons/safari.png" alt="safari" />
                         <p>Safari</p>
                     </div>
                 </div>
@@ -47,7 +39,6 @@ export default class Body extends OS {
                     <li><a href="javascript:;">Supprimer</a></li>
                 </ul>
             </nav>
-
             `
         )
     }

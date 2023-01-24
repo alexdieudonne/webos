@@ -1,11 +1,9 @@
 import { AppHandler } from "../lib/AppHandler";
 import "../scss/settings.scss"
 
-
 export class Settings extends AppHandler {
     constructor() {
-        super({ icon: "/img/icons/settings.png", name: "Settings", handler: () => { } });
-
+        super({ icon: "/img/icons/settings.svg", name: "Settings", handler: () => { } });
     }
 
     render() {
@@ -54,13 +52,13 @@ export class Settings extends AppHandler {
                 <section>
                     <h3>Heures</h3>
                     <div class="bloc-label">
-                    <h5>Afficher le l'heure</h5> 
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round">
-                        </span>
-                    </label>
-                  </div>
+                        <h5>Afficher le l'heure</h5>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round">
+                            </span>
+                        </label>
+                    </div>
                     <div class="bloc-label">
                         <h5>Afficher les minutes</h5> 
                         <label class="switch">
@@ -113,3 +111,27 @@ export class Settings extends AppHandler {
     }
 }
 
+// TODO: Add a settings manager to save the settings
+let savedSettings = {
+    date: {
+        showDay: true,
+        showDate: true,
+        showMonth: true,
+        showYear: true
+    },
+    time: {
+        showHour: true,
+        showMinute: true,
+        showSecond: true
+    },
+    network: {
+        showProvider: true,
+        showLatency: true,
+        latencyDomain: "https://google.fr"
+    },
+    battery: {
+        showBattery: true,
+        showBatteryPercent: true
+    }
+}
+console.log(savedSettings);

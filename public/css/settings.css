@@ -1,7 +1,17 @@
+/* Flex Mixins
+======================= */
+/* Border Radius Mixins
+======================= */
+/* Utils Mixins
+======================= */
+/* Reset Mixins
+======================= */
 .settings {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 .settings section {
   width: 80%;
@@ -9,12 +19,22 @@
 }
 .settings section .bloc-label {
   display: flex;
-  margin-top: 10px;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-top: 0.5rem;
 }
 .settings section h5 {
   margin: 0;
+}
+.settings section input {
+  border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  border: none;
 }
 
 /*# sourceMappingURL=settings.css.map */

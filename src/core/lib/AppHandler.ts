@@ -26,7 +26,7 @@ function create_app(name: string, image: string, id: string, render?: string, ha
     const app_main = document.querySelector('#app-main')
     let app = document.createElement("div");
 
-    app.classList.add("app-os")
+    app.classList.add("application")
     app.id = id
     app.ondblclick = (((ev: any) => { window_open(id, render, handler) }));
     app.oncontextmenu = e => {
@@ -94,7 +94,8 @@ function handle() {
     }, true);
     document.addEventListener('mouseup', function () {
         isDown = false;
-        scl_os_wd!.style.transition = '0.1s ease'
+        // FIX: The transition delay the resize of the window
+        // scl_os_wd!.style.transition = '0.1s ease'
     }, true);
 
     document.addEventListener('mousemove', function (e) {
