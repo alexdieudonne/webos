@@ -3,18 +3,4 @@
 // NOTE: This is the file that contains the options for the application
 // It will not be used in the final build, but it is useful for development
 
-// Headers options
-$header-height: 60px;
-$header-background: rgba($color: c.$darkblue, $alpha: 0.4);
-$display-time: true;
-$display-network: true;
-$display-battery: true;
-$display-battery-label: false;
 
-// Homepage options
-$homepage-padding: 50px;
-$homepage-padding-mobile: 25px;
-$homepage-grid-gap: 1rem;
-$homepage-grid-gap-mobile: 1rem;
-$homepage-grid-template-columns: repeat(8, 1fr);
-$homepage-grid-template-columns-mobile: repeat(4, 1fr);

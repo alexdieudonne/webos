@@ -1,4 +1,5 @@
 @use './mixins/utils' as u;
+@use './mixins/colors' as c;
 
 .settings {
     @include u.flex($justify-content: center, $align-items: center, $flex-direction: column);
@@ -23,4 +24,82 @@
             border: none;
         }
     }
+
+
 }
+
+// Toggle buttons
+.toggle {
+    @include u.flex($justify-content: space-between, $align-items: center, $flex-direction: row-reverse);
+    position: relative;
+    margin-bottom: 1em;
+    cursor: pointer;
+    gap: 1ch;
+    outline: 0;
+
+    &__input {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__display {
+        --offset: 0.25rem;
+        --diameter: 1.2rem;
+
+        @include u.flex($justify-content: space-around, $align-items: center);
+        width: calc(var(--diameter) * 2 + var(--offset) * 2);
+        height: calc(var(--diameter) + var(--offset) * 2);
+        box-sizing: content-box;
+        border: 0.1rem solid rgb(0 0 0 / 0.1);
+        position: relative;
+        border-radius: 100px;
+        background-color: c.$gray;
+        transition: all 0.2s ease-in-out;
+
+        &::before {
+            content: "";
+            z-index: 2;
+            position: absolute;
+            top: 50%;
+            left: var(--offset);
+            box-sizing: border-box;
+            width: var(--diameter);
+            height: var(--diameter);
+            border: 0.1em solid rgb(0 0 0 / 0.2);
+            border-radius: 50%;
+            background-color: white;
+            transform: translate(0, -50%);
+            will-change: transform;
+            transition: inherit;
+        }
+    }
+
+    &:focus,
+    &:focus:not(:focus-visible) .toggle__display,
+    &__input:focus:not(:focus-visible) + .toggle__display {
+        outline: 0;
+    }
+
+    &[aria-pressed="true"] .toggle__display,
+    &__input:checked + .toggle__display {
+        background-color: #2196f3;
+    }
+
+    &[aria-pressed="true"] .toggle__display::before,
+    &__input:checked+.toggle__display::before {
+        transform: translate(100%, -50%);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

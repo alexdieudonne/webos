@@ -10,95 +10,76 @@ export class Settings extends AppHandler {
         return (`
             <div class="settings">
                 <h3>Paramètres</h3>
-                <section>
+
+                <section class="settings-section">
                     <h3>Date</h3>
-                    <div class="bloc-label">
-                        <h5>Afficher la date</h5> 
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round">
-                            </span>
-                        </label>
-                    </div>
 
-                    <div class="bloc-label">
-                        <h5>Afficher l'année</h5> 
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round">
-                            </span>
-                        </label>
-                    </div>
+                    <label class='toggle' for='toggleDate'>
+                        <input type='checkbox' name='toggleDate' id='toggleDate' class="toggle__input" checked />
+                        <span class="toggle__display" hidden></span>
+                        Display date
+                    </label>
 
-                    <div class="bloc-label">
-                        <h5>Afficher le mois</h5> 
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round">
-                            </span>
-                        </label>
-                    </div>
+                    <label class='toggle' for='toggleYear'>
+                        <input type='checkbox' name='toggleYear' id='toggleYear' class="toggle__input" checked />
+                        <span class="toggle__display" hidden></span>
+                        Display year
+                    </label>
 
-                    <div class="bloc-label">
-                        <h5>Afficher le jour</h5> 
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round">
-                            </span>
-                        </label>
-                    </div>
+                    <label class='toggle' for='toggleMonth'>
+                        <input type='checkbox' name='toggleMonth' id='toggleMonth' class="toggle__input" checked />
+                        <span class="toggle__display" hidden></span>
+                        Display month
+                    </label>
+
+                    <label class='toggle' for='toggleDay'>
+                        <input type='checkbox' name='toggleDay' id='toggleDay' class="toggle__input" checked />
+                        <span class="toggle__display" hidden></span>
+                        Display day
+                    </label>
                 </section>
 
-                <section>
+                <section class="settings-section">
                     <h3>Heures</h3>
-                    <div class="bloc-label">
-                        <h5>Afficher le l'heure</h5>
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round">
-                            </span>
-                        </label>
-                    </div>
-                    <div class="bloc-label">
-                        <h5>Afficher les minutes</h5> 
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round">
-                            </span>
-                        </label>
-                    </div>
-                    <div class="bloc-label">
-                        <h5>Afficher les secondes</h5> 
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round">
-                            </span>
-                        </label>
-                    </div>
+
+                    <label class='toggle' for='toggleHour'>
+                        <input type='checkbox' name='toggleHour' id='toggleHour' class="toggle__input" checked />
+                        <span class="toggle__display" hidden></span>
+                        Display hour
+                    </label>
+
+                    <label class='toggle' for='toggleMinute'>
+                        <input type='checkbox' name='toggleMinute' id='toggleMinute' class="toggle__input" checked />
+                        <span class="toggle__display" hidden></span>
+                        Display minute
+                    </label>
+
+                    <label class='toggle' for='toggleSecond'>
+                        <input type='checkbox' name='toggleSecond' id='toggleSecond' class="toggle__input" checked />
+                        <span class="toggle__display" hidden></span>
+                        Display second
+                    </label>
                 </section>
-                <section>
+
+                <section class="settings-section">
                     <h3>Réseau</h3>
-                    <div class="bloc-label">
-                        <h5>Afficher la latence</h5> 
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round">
-                            </span>
-                        </label>
-                    </div>
+
+                    <label class='toggle' for='toggleLatency'>
+                        <input type='checkbox' name='toggleLatency' id='toggleLatency' class="toggle__input" checked />
+                        <span class="toggle__display" hidden></span>
+                        Display latency
+                    </label>
 
                     <div class="bloc-label">
-                        <h5>Domaine de latence checking</h5> 
-                        <label for="input_latency">
-                            <input id="input_latency" placeholder="https://google.fr">
-                        </label>
+                        <label for="input_latency">Latency domain</label>
+                        <input id="input_latency" placeholder="https://google.fr">
                     </div>
                 </section>
 
-                <section>
+                <section class="settings-section">
                     <h3>Batterie</h3>
                     <div class="bloc-label">
-                        <h5>Afficher la batterie</h5> 
+                        <h5>Afficher la batterie</h5>
                         <label class="switch">
                             <input type="checkbox">
                             <span class="slider round">
@@ -135,3 +116,5 @@ let savedSettings = {
     }
 }
 console.log(savedSettings);
+
+// Handle the toggle of the switch for the settings
