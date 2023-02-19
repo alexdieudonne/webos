@@ -159,7 +159,7 @@ const calculatorHandle = ()=> {
         }
         let result: string | undefined = operand ? operand + '' + value : value?.toString();
         result = (isNegative && parseInt(result ?? "") > 0) ? (-result!).toString() : result?.toString();
-        if (format(parseInt(result ?? "")) === 0 || format(parseInt(result ?? "")) === -0) display!.innerHTML = result!;
+        if (format(parseInt(result ?? "")) === 0 || format(parseInt(result ?? "")) === 0) display!.innerHTML = result!;
         else display!.innerHTML = format(parseInt(result ?? "")).toString();
         return result;
     }
