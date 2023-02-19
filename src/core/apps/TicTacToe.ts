@@ -24,6 +24,7 @@ export class TicTacToe extends AppHandler {
             <h2 class="game--status"></h2>
             <span class="scoreX">ScoreX: 0 </span> <br>
             <span class="scoreO">ScoreO: 0 </span> <br>
+            <button class="game--reset">Reset Game</button>
             <button class="game--restart">Restart Game</button>
         </section>`
         )
@@ -128,6 +129,19 @@ const tictactoeHandle = () => {
         handleResultValidation();
     }
 
+    function handleResetGame() {
+        gameActive = true;
+        currentPlayer = "X";
+        gameState = ["", "", "", "", "", "", "", "", ""];
+        statusDisplay.innerHTML = currentPlayerTurn();
+        document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
+        // reset scores and remove from local storage
+        scoreX.innerHTML = `Score X:0`;
+        localStorage.removeItem('scoreX');
+        scoreO.innerHTML = `Score O:0`;
+        localStorage.removeItem('scoreO');
+    
+    }
 
     function handleRestartGame(): void {
         gameActive = true;
@@ -141,6 +155,7 @@ const tictactoeHandle = () => {
 
     document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleCellClick));
     document.querySelector('.game--restart')?.addEventListener('click', handleRestartGame);
+    document.querySelector('.game--reset')?.addEventListener('click', handleResetGame);
 
 }
 
