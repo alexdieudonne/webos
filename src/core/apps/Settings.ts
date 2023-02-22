@@ -15,7 +15,7 @@ export class Settings extends AppHandler {
                     <div class="bloc-label">
                         <h5>Afficher la date</h5> 
                         <label class="switch">
-                            <input type="checkbox">
+                            <input id="date" type="checkbox">
                             <span class="slider round">
                             </span>
                         </label>
@@ -24,7 +24,7 @@ export class Settings extends AppHandler {
                     <div class="bloc-label">
                         <h5>Afficher l'année</h5> 
                         <label class="switch">
-                            <input type="checkbox">
+                            <input id="year" type="checkbox">
                             <span class="slider round">
                             </span>
                         </label>
@@ -33,7 +33,7 @@ export class Settings extends AppHandler {
                     <div class="bloc-label">
                         <h5>Afficher le mois</h5> 
                         <label class="switch">
-                            <input type="checkbox">
+                            <input id="month" type="checkbox">
                             <span class="slider round">
                             </span>
                         </label>
@@ -42,7 +42,7 @@ export class Settings extends AppHandler {
                     <div class="bloc-label">
                         <h5>Afficher le jour</h5> 
                         <label class="switch">
-                            <input type="checkbox">
+                            <input id="day" type="checkbox">
                             <span class="slider round">
                             </span>
                         </label>
@@ -54,7 +54,7 @@ export class Settings extends AppHandler {
                     <div class="bloc-label">
                         <h5>Afficher le l'heure</h5>
                         <label class="switch">
-                            <input type="checkbox">
+                            <input id="hour" type="checkbox">
                             <span class="slider round">
                             </span>
                         </label>
@@ -62,7 +62,7 @@ export class Settings extends AppHandler {
                     <div class="bloc-label">
                         <h5>Afficher les minutes</h5> 
                         <label class="switch">
-                            <input type="checkbox">
+                            <input id="minute" type="checkbox">
                             <span class="slider round">
                             </span>
                         </label>
@@ -70,7 +70,7 @@ export class Settings extends AppHandler {
                     <div class="bloc-label">
                         <h5>Afficher les secondes</h5> 
                         <label class="switch">
-                            <input type="checkbox">
+                            <input id="second" type="checkbox">
                             <span class="slider round">
                             </span>
                         </label>
@@ -81,16 +81,9 @@ export class Settings extends AppHandler {
                     <div class="bloc-label">
                         <h5>Afficher la latence</h5> 
                         <label class="switch">
-                            <input type="checkbox">
+                            <input id="latency" type="checkbox">
                             <span class="slider round">
                             </span>
-                        </label>
-                    </div>
-
-                    <div class="bloc-label">
-                        <h5>Domaine de latence checking</h5> 
-                        <label for="input_latency">
-                            <input id="input_latency" placeholder="https://google.fr">
                         </label>
                     </div>
                 </section>
@@ -100,7 +93,7 @@ export class Settings extends AppHandler {
                     <div class="bloc-label">
                         <h5>Afficher la batterie</h5> 
                         <label class="switch">
-                            <input type="checkbox">
+                            <input id="battery" type="checkbox">
                             <span class="slider round">
                             </span>
                         </label>
@@ -110,7 +103,7 @@ export class Settings extends AppHandler {
         `)
     }
 }
-
+/*
 // TODO: Add a settings manager to save the settings
 let savedSettings = {
     date: {
@@ -127,11 +120,12 @@ let savedSettings = {
     network: {
         showProvider: true,
         showLatency: true,
-        latencyDomain: "https://google.fr"
     },
     battery: {
         showBattery: true,
         showBatteryPercent: true
     }
 }
-console.log(savedSettings);
+*/
+
+

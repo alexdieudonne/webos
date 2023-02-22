@@ -127,6 +127,10 @@ const tictactoeHandle = () => {
 
         handleCellPlayed(clickedCell, clickedCellIndex);
         handleResultValidation();
+        /*
+        if ('vibrate' in navigator) {
+            navigator.vibrate(100); // Vibrate for 100ms
+        }*/
     }
 
     function handleResetGame() {
