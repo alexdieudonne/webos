@@ -37,6 +37,19 @@ body {
                 justify-content: flex-end;
                 gap: 0.33rem;
             }
+
+            .weather {
+                @include u.flex($justify-content: flex-start, $align-items: center);
+                gap: 0.33rem;
+                margin-right: 1.25rem;
+                font-size: 0.75rem;
+                font-weight: 500;
+                color: c.$white;
+                margin-left: auto;
+                span {
+                    margin-right: 0;
+                }
+            }
         }
     }
 }

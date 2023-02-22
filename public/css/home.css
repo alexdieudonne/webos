@@ -68,6 +68,23 @@ body .navbar > div.left-side {
 }
 body .navbar > div.right-side {
   justify-content: flex-end;
+  gap: 0.33rem;
+}
+body .navbar > div .weather {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.33rem;
+  margin-right: 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #F2F2F2;
+  margin-left: auto;
+}
+body .navbar > div .weather span {
+  margin-right: 0;
 }
 
 #app {
