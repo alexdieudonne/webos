@@ -2,6 +2,7 @@ import { OS } from '../type'
 import "../apps/clock"
 import "../apps/Battery"
 import "../apps/Performance"
+import "../apps/Weather"
 
 export default class AppBar extends OS {
 
@@ -12,6 +13,16 @@ export default class AppBar extends OS {
 
                     <div class="left-side loading">
                         <p class="current-time"></p>
+                    </div>
+                    <div class="center-side">
+                        <section class="weather">
+                            <span class="weather-temp"></span>
+                            <img src="" alt="" class="weather-icon" loading="lazy" data-show>
+                            <span class="weather-location"></span>
+                            <a class="refresh-btn" onclick="location.reload();">
+                                <img class="refresh-icon" width="24px" height="24px" src="/img/Refresh.png" alt="Refresh icon">
+                            </a>
+                        </section>
                     </div>
 
                     <div class="right-side">
