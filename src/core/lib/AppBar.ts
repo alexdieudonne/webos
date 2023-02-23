@@ -3,6 +3,7 @@ import "../apps/clock"
 import "../apps/Battery"
 import "../apps/Performance"
 import "../apps/Weather"
+import "../apps/DateTime"
 
 export default class AppBar extends OS {
 
@@ -12,7 +13,8 @@ export default class AppBar extends OS {
                 <div class="navbar">
 
                     <div class="left-side loading">
-                        <p class="current-time"></p>
+                        <p id="showTime" class="current-time"></p>
+                        <p id="showDate" class="current-date"></p>
                     </div>
                     <div class="center-side">
                         <div id="showWeather" class="weather">

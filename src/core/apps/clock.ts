@@ -17,9 +17,30 @@ const updateCurrentTime = (): void => {
                     const currentMinutes : String | number = minutes < 10 ? `0${minutes}` : minutes;
                     const currentSeconds : String | number = seconds < 10 ? `0${seconds}` : seconds;
 
+                    if (localStorage.getItem("settings") === null || localStorage.getItem("settings") === undefined) {
+                        clock.textContent = `${currentHours}:${currentMinutes}`;
+                    }
+                
+                    let settings = JSON.parse(localStorage.getItem("settings") as string);
+
+                    let time = document.getElementById("showTime") as HTMLInputElement;
+
+                    
+                    if (settings?.time.showHour) {
+                        document.getElementById("showTime").innerHTML = `${currentHours}H` ;
+                    } 
+
+                    if (settings?.time.showMinute) {
+                        document.getElementById("showTime").innerHTML =  `${currentHours}:${currentMinutes}`;
+                    }
+
+                    if (settings?.time.showSecond) {
+                        document.getElementById("showTime").innerHTML =  `${currentHours}:${currentMinutes}:${currentSeconds}`;
+                    }
+                
                     // TODO: Check if the user wants to display seconds in the settings
                     // clock.textContent = `${currentHours}:${currentMinutes}:${currentSeconds}`;
-                    clock.textContent = `${currentHours}:${currentMinutes}`;
+                    //clock.textContent = `${currentHours}:${currentMinutes}`;
                 }, 1000
             )
         }

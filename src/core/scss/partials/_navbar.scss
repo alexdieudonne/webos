@@ -31,6 +31,7 @@ body {
             &.left-side {
                 width: fit-content;
                 justify-content: flex-start;
+                gap: 0.33rem;
             }
 
             &.right-side {

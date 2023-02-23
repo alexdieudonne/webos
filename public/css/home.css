@@ -65,6 +65,7 @@ body .navbar > div .icon-group span {
 body .navbar > div.left-side {
   width: fit-content;
   justify-content: flex-start;
+  gap: 0.33rem;
 }
 body .navbar > div.right-side {
   justify-content: flex-end;
