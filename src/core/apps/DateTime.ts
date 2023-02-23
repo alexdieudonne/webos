@@ -26,7 +26,7 @@ const updateCurrrentDate = (): void => {
     
 
 
-                    switch(settings.date !== null){
+                    switch(settings !== null){
                         case settings?.date.showDay && settings?.date.showMonth && settings?.date.showYear:
                             document.getElementById("showDate").innerHTML = `${currentDay}/${currentMonth}/${currentYear}`;
                             break;
@@ -52,16 +52,17 @@ const updateCurrrentDate = (): void => {
                             document.getElementById("showDate").innerHTML = `${currentDay}`;
                             break;
                         
+                        case settings?.date.showDate:
+                            document.getElementById("showDate").style.visibility = "visible";
+                            break;
+
+                        case !settings?.date.showDate:
+                            document.getElementById("showDate").style.visibility = "hidden";
+                            break;
                     
                         default:
                             document.getElementById("showDate").innerHTML = `${currentDay}/${currentMonth}/${currentYear}`;
                             break;
-                    }
-
-                    if(settings?.date.showDate) {
-                        document.getElementById("showDate").style.visibility = "visible";
-                    }else {
-                        document.getElementById("showDate").style.visibility = "hidden";
                     }
                 
                 }, 1000

@@ -25,7 +25,7 @@ const updateCurrentTime = (): void => {
                     }
                    
 
-                    switch(settings.time !== null){
+                    switch(settings !== null){
                         case settings?.time.showHour && settings?.time.showMinute && settings?.time.showSecond:
                             document.getElementById("showTime").innerHTML = `${currentHours}:${currentMinutes}:${currentSeconds}`;
                             break;
