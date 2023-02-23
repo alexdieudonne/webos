@@ -110,6 +110,9 @@ export class Settings extends AppHandler {
                         </label>
                     </div>
                 </section>
+
+                <button id="download">Télécharger les paramètres</button>
+                <button id="upload">Charger les paramètres</button>
             </div>
         `)
     }
@@ -242,8 +245,41 @@ const saveSettings = ()=> {
 
     });
 
+    let download = document.getElementById("download") as HTMLParagraphElement;
+    download.addEventListener("click", () => {
+        exportSettingsToJSON();
+    });
 
-   
+    let upload = document.getElementById("upload") as HTMLParagraphElement;
+    upload.addEventListener("click", () => {
+        importSettingFromJSON();
+    });
 }
 
+function exportSettingsToJSON() {
+    let settings = JSON.parse(localStorage.getItem("settings") as string);
+    let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(settings));
+    let downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", "settings.json");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+}
 
+function importSettingFromJSON() {
+    let input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = e => {
+        let file = (e.target as HTMLInputElement).files[0];
+        let reader = new FileReader();
+        reader.readAsText(file, "UTF-8");
+        reader.onload = readerEvent => {
+            let content = (readerEvent.target as any).result;
+            localStorage.setItem("settings", content);
+            saveSettings();
+        }
+    }
+    input.click();
+}
