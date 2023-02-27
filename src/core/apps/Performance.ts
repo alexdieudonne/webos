@@ -8,7 +8,7 @@ function checkLatency() {
     .then(response => response.json())
     .then(data => {
       const latency = performance.now() - startTime; // calculate the latency
-      console.log(`Latency: ${ Math.round(latency)} ms`);
+      // console.log(`Latency: ${ Math.round(latency)} ms`);
       // Display the latency on the page, e.g. update a DOM element
       const latencyDisplay = document.querySelector("#latency");
       if (latencyDisplay)
