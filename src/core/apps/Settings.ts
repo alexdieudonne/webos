@@ -99,7 +99,7 @@ export class Settings extends AppHandler {
                         </label>
                     </div>
                 </section>
-                 <section>
+                <section>
                     <h3>Weather</h3>
                     <div class="bloc-label">
                         <h5>Afficher la la meteo</h5> 
@@ -214,9 +214,9 @@ const saveSettings = ()=> {
         settings.network.showLatency = latency.checked;
         localStorage.setItem("settings", JSON.stringify(settings));
         if (latency.checked) {
-            document.getElementById("showNetwork").style.visibility = "visible";
+            document.getElementById("showNetwork")!.style.visibility = "visible";
         } else {
-            document.getElementById("showNetwork").style.visibility = "hidden";
+            document.getElementById("showNetwork")!.style.visibility = "hidden";
         }
     });
 
@@ -225,9 +225,9 @@ const saveSettings = ()=> {
         localStorage.setItem("settings", JSON.stringify(settings));
         //add hidden visibility to battery percent
         if (battery.checked) {
-            document.getElementById("showBattery").hidden = false;
+            document.getElementById("showBattery")!.hidden = false;
         } else {
-            document.getElementById("showBattery").hidden = true;
+            document.getElementById("showBattery")!.hidden = true;
         }
 
     }); 
@@ -235,12 +235,12 @@ const saveSettings = ()=> {
     weather.addEventListener("change", () => {
         settings.weather.showWeather = weather.checked;
         localStorage.setItem("settings", JSON.stringify(settings));
-        console.log(document.getElementById("showWeather").hidden)
+        console.log(document.getElementById("showWeather")!.hidden)
         //add hidden visibility to battery percent
         if (weather.checked) {
-            document.getElementById("showWeather").style.visibility = "visible";
+            document.getElementById("showWeather")!.style.visibility = "visible";
         } else {
-            document.getElementById("showWeather").style.visibility = "hidden";
+            document.getElementById("showWeather")!.style.visibility = "hidden";
         }
 
     });
@@ -272,7 +272,7 @@ function importSettingFromJSON() {
     input.type = 'file';
     input.accept = '.json';
     input.onchange = e => {
-        let file = (e.target as HTMLInputElement).files[0];
+        let file = (e.target as HTMLInputElement).files![0];
         let reader = new FileReader();
         reader.readAsText(file, "UTF-8");
         reader.onload = readerEvent => {

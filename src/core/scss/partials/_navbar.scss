@@ -4,51 +4,54 @@
 @use '../mixins/utils' as u;
 
 body {
-    @include u.reset-body();
-    background: c.$black;
-    min-height: 100vh;
+    // background: c.$black;
+    // @include u.reset-body();
+    // min-height: 100vh;
 
-    .navbar {
-        @include u.flex($justify-content: space-between, $align-items: center);
-        min-height: 60px;
-        height: 100%;
-        margin: 0 2rem;
-        color: c.$white;
-
-        > div {
+    header {
+        background: c.$black;
+        .navbar {
             @include u.flex($justify-content: space-between, $align-items: center);
-            @include u.full-size();
-            margin: 0 auto;
+            min-height: 60px;
+            height: 100%;
+            margin: 0 2rem;
+            color: c.$white;
 
-            .icon-group {
-                @include u.flex($justify-content: flex-start, $align-items: center);
-                margin-left: 1.25rem;
-                span {
-                    margin-right: .5rem;
+            > div {
+                @include u.flex($justify-content: space-between, $align-items: center);
+                @include u.full-size();
+                margin: 0 auto;
+
+                .icon-group {
+                    @include u.flex($justify-content: flex-start, $align-items: center);
+                    margin-left: 1.25rem;
+                    span {
+                        margin-right: .5rem;
+                    }
                 }
-            }
 
-            &.left-side {
-                width: fit-content;
-                justify-content: flex-start;
-                gap: 0.33rem;
-            }
+                &.left-side {
+                    width: fit-content;
+                    justify-content: flex-start;
+                    gap: 0.33rem;
+                }
 
-            &.right-side {
-                justify-content: flex-end;
-                gap: 0.33rem;
-            }
+                &.right-side {
+                    justify-content: flex-end;
+                    gap: 0.33rem;
+                }
 
-            .weather {
-                @include u.flex($justify-content: flex-start, $align-items: center);
-                gap: 0.33rem;
-                margin-right: 1.25rem;
-                font-size: 0.75rem;
-                font-weight: 500;
-                color: c.$white;
-                margin-left: auto;
-                span {
-                    margin-right: 0;
+                .weather {
+                    @include u.flex($justify-content: flex-start, $align-items: center);
+                    gap: 0.33rem;
+                    margin-right: 1.25rem;
+                    font-size: 0.75rem;
+                    font-weight: 500;
+                    color: c.$white;
+                    margin-left: auto;
+                    span {
+                        margin-right: 0;
+                    }
                 }
             }
         }
