@@ -18,7 +18,6 @@ export abstract class AppHandler {
             handle()
         }.bind(this));
     }
-
 }
 
 function create_app(name: string, image: string, id: string, render?: string, handler?: () => void) {
@@ -144,10 +143,6 @@ function handle() {
     }, true);
 }
 
-
-
-
-
 function show(tag: HTMLElement) {
     tag.style.display = "block"
 }
@@ -155,8 +150,6 @@ function show(tag: HTMLElement) {
 function hide(tag: HTMLElement) {
     tag.style.display = "none"
 }
-
-
 
 function init_window() {
     const school_os_wd: HTMLDivElement | null = document.querySelector(".school-os-wd")

@@ -1,6 +1,41 @@
 // TODO: Add skeleton animation to the current time
 
-// TODO: Add close animation
+@keyframes close {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(2.5);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(10px);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    75% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 // TODO: Add minimize animation
 // TODO: Add maximize animation
 
@@ -9,3 +44,5 @@
 
 // TODO: Add network change animation (when the network is connected)
 // TODO: Add searching for network animation (when the network is disconnected)
+
+
