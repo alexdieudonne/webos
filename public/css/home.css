@@ -24,6 +24,7 @@ body, html {
 /* Reset Mixins
 ======================= */
 body header {
+  height: 60px;
   background: #1A1B26;
 }
 body header .navbar {

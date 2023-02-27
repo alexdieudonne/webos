@@ -3,7 +3,7 @@ import "../scss/tictactoe.scss"
 
 export class TicTacToe extends AppHandler {
     constructor() {
-        super({ icon: "/img/icons/calculator.svg", name: "TicTacToe", handler: tictactoeHandle });
+        super({ icon: "/img/icons/tictactoe.svg", name: "TicTacToe", handler: tictactoeHandle });
     }
 
     render() {

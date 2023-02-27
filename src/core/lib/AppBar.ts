@@ -1,5 +1,6 @@
 import { OS } from '../type'
-import "../apps/clock"
+import "../apps/Clock"
+import "../apps/Clocks"
 import "../apps/Battery"
 import "../apps/Performance"
 import "../apps/Weather"

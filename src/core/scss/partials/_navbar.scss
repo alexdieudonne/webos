@@ -9,6 +9,7 @@ body {
     // min-height: 100vh;
 
     header {
+        height: 60px;
         background: c.$black;
         .navbar {
             @include u.flex($justify-content: space-between, $align-items: center);
