@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap");
+body, html {
+  margin: 0;
+  padding: 0;
+  background: #0089BA;
+  font-family: "Roboto", sans-serif;
+}
+
+.clock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border: 8px solid #000;
+}
+.clock .background {
+  position: relative;
+  height: 100%;
+  border-radius: 100%;
+  transform: scale(1);
+  background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngkey.com%2Fpng%2Fdetail%2F411-4110321_free-download-clock-template-with-hands-clipart-clock.png&f=1&nofb=1&ipt=6d8529c63a6cc2fd4dcf8e84fe23b8ff095f4a38b63bb6dcaa4a15b192eda4fd&ipo=images") center center no-repeat;
+  background-size: cover;
+}
+.clock .background .indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50px;
+  background: #000;
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: right;
+  transition: all 0.2S ease-in-out;
+}
+.clock .background .indicator.hour {
+  left: calc(50% - 30px);
+  width: 60px;
+  height: 4px;
+}
+.clock .background .indicator.minute {
+  left: calc(50% - 40px);
+  width: 80px;
+  height: 4px;
+}
+.clock .background .indicator.second {
+  left: calc(50% - 60px);
+  width: 120px;
+  height: 2px;
+  background: red;
+  z-index: 1;
+}
+.clock .background .indicator.second::before {
+  content: "";
+  position: absolute;
+  right: calc(0% - 10px);
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: #000;
+  border-radius: 100%;
+  transform-origin: left;
+  z-index: 100;
+}
+.clock .background .indicator.second::after {
+  content: "";
+  position: absolute;
+  left: 99%;
+  width: 20px;
+  height: 2px;
+  border-radius: 50px;
+  background: red;
+}
+
+.stopwatch {
+  width: 50%;
+  margin: 0 auto;
+}
+.stopwatch-time {
+  font-size: clamp(1.5rem, 2vw, 3rem);
+  text-align: center;
+  letter-spacing: 6px;
+}
+.stopwatch-controls {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+.stopwatch-controls button {
+  padding: 10px 20px;
+  margin: 0 15px;
+  border: none;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.stopwatch-controls button:hover {
+  background: #fff;
+  color: #000;
+}
+
+/*# sourceMappingURL=clock.css.map */
