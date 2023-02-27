@@ -85,6 +85,7 @@ function handle() {
 
     window_bar!.addEventListener('mousedown', function (e) {
         isDown = true;
+
         offset = [
             scl_os_wd!.offsetLeft - e.clientX,
             scl_os_wd!.offsetTop - e.clientY,
@@ -92,10 +93,46 @@ function handle() {
             scl_os_wd!.style.transition = 'none'
         ];
     }, true);
-    document.addEventListener('mouseup', function () {
-        isDown = false;
+    document.addEventListener('mouseup', function (e) {
         // FIX: The transition delay the resize of the window
         // scl_os_wd!.style.transition = '0.1s ease'
+
+        // Handle snapping
+        if (isDown) {
+            scl_os_wd!.style.left = (e.clientX + offset[0]) + 'px';
+            scl_os_wd!.style.top = (e.clientY + offset[1]) + 'px';
+
+            if (e.clientX + offset[0] < 0) {
+                scl_os_wd!.style.left = '0px'
+                scl_os_wd!.style.top = '0px';
+                scl_os_wd!.style.height = '100vh';
+                scl_os_wd!.style.width = window.innerWidth / 2 + 'px'
+            }
+
+            if (e.clientX + offset[0] > window.innerWidth / 2) {
+                scl_os_wd!.style.left = window.innerWidth / 2 + 'px'
+                scl_os_wd!.style.top = '0px';
+                scl_os_wd!.style.height = '100vh';
+                scl_os_wd!.style.width = window.innerWidth / 2 + 'px'
+            }
+
+            if (e.clientY + offset[1] < 0) {
+                scl_os_wd!.style.left = '0px'
+                scl_os_wd!.style.top = '0px';
+                scl_os_wd!.style.height = window.innerHeight / 2 + 'px';
+                scl_os_wd!.style.width = '100vw'
+            }
+
+            if (e.clientY + offset[1] > window.innerHeight / 2) {
+                scl_os_wd!.style.left = '0px'
+                scl_os_wd!.style.top = window.innerHeight / 2 + 'px';
+                scl_os_wd!.style.height = window.innerHeight / 2 + 'px';
+                scl_os_wd!.style.width = '100vw'
+            }
+        }
+
+        // Reset isDown
+        isDown = false;
     }, true);
 
     document.addEventListener('mousemove', function (e) {
@@ -154,8 +191,6 @@ function maximize_window() {
     school_os_wd!.style.left = "0px"
     school_os_wd!.style.width = "100%"
     school_os_wd!.style.height = "100vh"
-
-
 }
 
 function shorter_window() {
@@ -183,8 +218,6 @@ function open_menu(e: MouseEvent) {
 
     return false
 }
-
-
 
 interface APHandle {
     icon: string;

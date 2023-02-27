@@ -104,7 +104,7 @@
                     }
 
                     i {
-                        font-size: 1rem;
+                        font-size: 0.5rem;
                         margin: 0 auto;
                         display: none;
                         line-height: inherit;
@@ -130,7 +130,8 @@
 
             .brand {
                 @include u.flex($justify-content: center, $align-items: center);
-                width: -webkit-fill-available;
+                width: fit-content;
+                margin: 0 auto;
                 position: relative;
                 left: -2rem;
 
