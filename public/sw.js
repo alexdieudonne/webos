@@ -1,4 +1,3 @@
-
 const addResourcesToCache = async (resources) => {
   const cache = await caches.open('v1');
   await cache.addAll(resources);
@@ -6,13 +5,13 @@ const addResourcesToCache = async (resources) => {
 
 self.addEventListener("install", (event) => {
 
-  fetch("manifest.json")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    event.waitUntil(
-      addResourcesToCache([
+  event.waitUntil(
+    fetch("manifest.json")
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return addResourcesToCache([
         "/",
         "/index.html",
         data['index.html']['css'][0],
@@ -41,12 +40,14 @@ self.addEventListener("install", (event) => {
         "https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap",
         "https://browser.sentry-cdn.com/5.16.1/bundle.min.js",
         "https://browser.sentry-cdn.com/5.16.1/tracing.bundle.min.js"
-      ]).catch((error) => {
-        console.error('Error caching resources:', error);
-      })
-    );
-  });
+      ]);
+    })
+    .catch((error) => {
+      console.error('Error caching resources:', error);
+    })
+  );
 });
+
 
 const cacheFirst = async (request) => {
   const responseFromCache = await caches.match(request);
