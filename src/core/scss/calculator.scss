@@ -1,5 +1,6 @@
 .calculator {
     display: grid;
+    position: relative;
     gap: 0px;
     background-color: #d6ffe9;
     //max-height: 800px;
@@ -103,4 +104,53 @@
 #zero {
     width: 155px;
     border-radius: 10px;
+}
+
+#history_ {
+    position: absolute;
+    top: 0;
+    height: 81%;
+    left: 0;
+    right: 0;
+    background-color: white;
+}
+
+.show-history {
+    display: flex;
+    flex-direction: column;
+    #history_ {
+        padding-block: 70px;
+        flex-direction: column;
+        >button {
+            padding: 0;
+            margin: 10px;
+            width: 52%;
+            height: 41px;
+            font-size: 17px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        #history_spans {
+            >div {
+                gap: 10px;
+                span {
+                    margin-bottom: 6px;
+                    padding: 10px;
+                    margin-inline: 12px;
+                    background-color: aliceblue;
+                    border-radius: 8px;
+                    color: black;
+                }
+            }
+        }
+    }
+    >button,
+    #hide-history {
+        width: 100%;
+        background-color: #0f8e4a;
+        &:hover {
+            opacity: .5;
+        }
+    }
 }
