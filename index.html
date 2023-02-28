@@ -23,8 +23,6 @@
             }
         });
         console.log("Sentry initialized")
-        Sentry.captureMessage("Initialized Sentry", "info");
-
         function crashAndReportError() {
             console.log('crashAndReportError');
             Sentry.captureException(new Error('Congrats, you broke it'));
