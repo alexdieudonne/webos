@@ -128,7 +128,7 @@ const calculatorHandle = ()=> {
         //If the number is too large, convert it to scientific notation.
         else num = parseInt(num.toExponential());
         //Adjust the font size of the display so the number fits.
-        if (num.toString().replace(/[-\.]/g, '').length >= 8) { console.log(num.toString().replace(/[-\.]/g, '').length); display!.style.fontSize = '53px'; }
+        if (num.toString().replace(/[-\.]/g, '').length >= 8) { display!.style.fontSize = '53px'; }
         return num;
     }
 
@@ -154,7 +154,6 @@ const calculatorHandle = ()=> {
     function operands(operand: string | number | null, value: number | null) {
         if (operand && operand.toString().replace(/[-\.]/g, '').length >= 7) display!.style.fontSize = '53px';
         if (operand && operand.toString().replace(/[-\.]/g, '').length >= 9) {
-            console.log('should just return')
             return operand;
         }
         let result: string | undefined = operand ? operand + '' + value : value?.toString();

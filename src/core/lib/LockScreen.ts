@@ -74,7 +74,6 @@ export default class LockScreen extends OS {
 
     unlock() {
         sessionStorage.setItem('locked', 'true');
-        console.log(sessionStorage.getItem('locked'));
         location.reload();
     }
 }

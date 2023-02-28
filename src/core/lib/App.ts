@@ -10,7 +10,6 @@ export default class App {
         initApp()
 
         const locked = sessionStorage.getItem('locked');
-        console.log(locked)
 
         app.innerHTML = `
           ${new Header}

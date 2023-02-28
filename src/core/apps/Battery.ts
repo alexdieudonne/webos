@@ -5,13 +5,11 @@ function getBatteryStatus() {
     const navigatorWithBattery = navigator as Navigator & { getBattery: () => Promise<BatteryManager>};
     navigatorWithBattery.getBattery().then(function(battery) {
         if (!battery) {
-            console.log("Battery API not supported");
             return;
         }
         
         const batteryIcon = document.querySelector('.battery-icon') as HTMLImageElement;;
         if (!batteryIcon) {
-            console.log("Battery icon not found");
             return;
         }
         
@@ -30,7 +28,6 @@ function getBatteryStatus() {
    
         
         setInterval(() => {
-            console.log(battery.level);
             const batteryLabel = document.querySelector('.battery-label');
             if (batteryLabel) {
                 batteryLabel.textContent = Math.ceil(battery.level * 100) + '%';

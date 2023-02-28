@@ -235,7 +235,6 @@ const saveSettings = ()=> {
     weather.addEventListener("change", () => {
         settings.weather.showWeather = weather.checked;
         localStorage.setItem("settings", JSON.stringify(settings));
-        console.log(document.getElementById("showWeather")!.hidden)
         //add hidden visibility to battery percent
         if (weather.checked) {
             document.getElementById("showWeather")!.style.visibility = "visible";
