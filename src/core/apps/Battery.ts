@@ -25,7 +25,6 @@ function getBatteryStatus() {
         if (batteryLabel) {
             batteryLabel.textContent = Math.ceil(battery.level * 100) + '%';
         }
-   
         
         setInterval(() => {
             const batteryLabel = document.querySelector('.battery-label');
@@ -36,7 +35,5 @@ function getBatteryStatus() {
         }
     );
 }
-  
-getBatteryStatus();
 
-  
+getBatteryStatus();

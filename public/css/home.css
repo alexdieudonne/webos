@@ -64,9 +64,23 @@ body header .navbar > div.left-side {
   justify-content: flex-start;
   gap: 0.33rem;
 }
+@media screen and (max-width: 768px) {
+  body header .navbar > div.left-side {
+    display: none;
+  }
+}
 body header .navbar > div.right-side {
   justify-content: flex-end;
   gap: 0.33rem;
+}
+@media screen and (max-width: 768px) {
+  body header .navbar > div.right-side #showNetwork {
+    display: none;
+  }
+  body header .navbar > div.right-side #showBattery {
+    display: contents;
+    gap: 0.5rem;
+  }
 }
 body header .navbar > div .weather {
   display: flex;
@@ -83,6 +97,11 @@ body header .navbar > div .weather {
 }
 body header .navbar > div .weather span {
   margin-right: 0;
+}
+@media screen and (max-width: 768px) {
+  body header .navbar > div .weather {
+    margin: 0;
+  }
 }
 
 #app {

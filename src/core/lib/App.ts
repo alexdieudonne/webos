@@ -6,6 +6,7 @@ import LockScreen from "./LockScreen";
 
 export default class App {
     constructor() {
+        const locked = sessionStorage.getItem('locked');
         const app = document.querySelector<HTMLDivElement>("#app")!;
         initApp()
 

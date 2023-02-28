@@ -19,6 +19,7 @@ const options = {
   
   function success(pos: pos) {
     const crd = pos.coords;
+    
     const key = "ee49d77f8390918fc5dc719252e12c19";
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${crd.latitude}&lon=${crd.longitude}&appid=${key}&units=metric`;
 
