@@ -66,6 +66,17 @@ function window_open(id: string, render?: string, handler?: () => void) {
     app_main!.innerHTML = render ?? "";
     show(school_os_wd as HTMLElement)
     if(handler) handler()
+
+    // Check the browser width and height, if the window is too small, then resize it so that it fits the screen
+    if (window.innerWidth < 768) {
+        school_os_wd!.style.width = "100vw";
+        school_os_wd!.style.height = "100vh";
+
+        // Handle the position of the window
+        school_os_wd!.style.top = "0px";
+        school_os_wd!.style.left = "0px";
+        school_os_wd!.style.borderRadius = "0px";
+    }
 }
 
 

@@ -263,18 +263,19 @@ const startTimer = () => {
 
         // Handle the notification
         if (hour === 0 && minute === 0 && second === 0) {
-            if (Notification.permission === 'granted') {
-                console.log("Notification granted:", Notification.permission);
-                new Notification('Timer Complete', {
-                    body: 'Your timer has finished',
-                });
-            } else if (Notification.permission !== 'denied') {
+            // Check if the browser supports notifications
+            if ('Notification' in window) {
+                // Request permission from the user to show notifications
                 Notification.requestPermission().then(permission => {
-                    if (permission === 'granted') {
-                        new Notification('Timer Complete', {
-                            body: 'Your timer has finished',
-                        });
-                    }
+                if (permission === 'granted') {
+                    // Create a new notification
+                    const notification = new Notification('Timer ended', {
+                        body: 'Your timer has ended',
+                        vibrate: [1000, 1000, 1000],
+                    });
+
+                    console.log(notification);
+                }
                 });
             }
 

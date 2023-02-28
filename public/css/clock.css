@@ -41,7 +41,7 @@ body, html {
   height: 100%;
   border-radius: 100%;
   transform: scale(1);
-  background: url("n/img/ClockBackground.webp") center center no-repeat;
+  background: url("/img/ClockBackground.webp") center center no-repeat;
   background-size: cover;
 }
 .clock .background .indicator {
@@ -120,6 +120,50 @@ body, html {
   transition: all 0.3s ease;
 }
 .stopwatch-controls button:hover {
+  background: #fff;
+  color: #000;
+}
+
+.timer {
+  position: relative;
+  width: 50%;
+  padding: 25px;
+}
+.timer-time {
+  font-size: clamp(1.5rem, 2vw, 3rem);
+  text-align: center;
+  letter-spacing: 6px;
+}
+.timer-input {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.timer-input input {
+  padding: 10px 20px;
+  margin: 0 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.timer-controls {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+.timer-controls button {
+  padding: 10px 20px;
+  margin: 0 15px;
+  border: none;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.timer-controls button:hover {
   background: #fff;
   color: #000;
 }
