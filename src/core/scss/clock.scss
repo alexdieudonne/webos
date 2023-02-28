@@ -1,3 +1,4 @@
+@use './mixins/utils' as u;
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
 
 body, html {
@@ -8,23 +9,32 @@ body, html {
 }
 
 .clock {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     width: 300px;
     height: 300px;
     background: #fff;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border: 8px solid #000;
+    margin: 50px auto;
+
+    &-app {
+        @include u.flex($justify-content: center, $align-items: center, $flex-direction: column);
+        padding: 50px;
+
+        .current-time2 {
+            font-size: clamp(1.5rem, 2vw, 3rem);
+            text-align: center;
+            letter-spacing: 6px;
+        }
+    }
 
     .background {
         position: relative;
         height: 100%;
         border-radius: 100%;
         transform: scale(1);
-        background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngkey.com%2Fpng%2Fdetail%2F411-4110321_free-download-clock-template-with-hands-clipart-clock.png&f=1&nofb=1&ipt=6d8529c63a6cc2fd4dcf8e84fe23b8ff095f4a38b63bb6dcaa4a15b192eda4fd&ipo=images') center center no-repeat;
+        // background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngkey.com%2Fpng%2Fdetail%2F411-4110321_free-download-clock-template-with-hands-clipart-clock.png&f=1&nofb=1&ipt=6d8529c63a6cc2fd4dcf8e84fe23b8ff095f4a38b63bb6dcaa4a15b192eda4fd&ipo=images') center center no-repeat;
+        background: url('n/img/ClockBackground.webp') center center no-repeat;
         background-size: cover;
 
         .indicator {
@@ -82,8 +92,9 @@ body, html {
 }
 
 .stopwatch {
+    position: relative;
     width: 50%;
-    margin: 0 auto;
+    padding: 25px;
 
     &-time {
         font-size: clamp(1.5rem, 2vw, 3rem);

@@ -31,7 +31,6 @@ export class TicTacToe extends AppHandler {
     }
 }
 const tictactoeHandle = () => {
-    console.log("Hello World");
     const statusDisplay: HTMLElement = document.querySelector('.game--status')!;
 
     let gameActive = true;

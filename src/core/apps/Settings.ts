@@ -13,7 +13,7 @@ export class Settings extends AppHandler {
                 <section>
                     <h3>Date</h3>
                     <div class="bloc-label">
-                        <h5>Afficher la date</h5> 
+                        <h5>Afficher la date</h5>
                         <label class="switch">
                             <input id="date" type="checkbox">
                             <span class="slider round">
@@ -22,7 +22,7 @@ export class Settings extends AppHandler {
                     </div>
 
                     <div class="bloc-label">
-                        <h5>Afficher l'année</h5> 
+                        <h5>Afficher l'année</h5>
                         <label class="switch">
                             <input id="year" type="checkbox">
                             <span class="slider round">
@@ -31,7 +31,7 @@ export class Settings extends AppHandler {
                     </div>
 
                     <div class="bloc-label">
-                        <h5>Afficher le mois</h5> 
+                        <h5>Afficher le mois</h5>
                         <label class="switch">
                             <input id="month" type="checkbox">
                             <span class="slider round">
@@ -40,7 +40,7 @@ export class Settings extends AppHandler {
                     </div>
 
                     <div class="bloc-label">
-                        <h5>Afficher le jour</h5> 
+                        <h5>Afficher le jour</h5>
                         <label class="switch">
                             <input id="day" type="checkbox">
                             <span class="slider round">
@@ -60,7 +60,7 @@ export class Settings extends AppHandler {
                         </label>
                     </div>
                     <div class="bloc-label">
-                        <h5>Afficher les minutes</h5> 
+                        <h5>Afficher les minutes</h5>
                         <label class="switch">
                             <input id="minute" type="checkbox">
                             <span class="slider round">
@@ -68,7 +68,7 @@ export class Settings extends AppHandler {
                         </label>
                     </div>
                     <div class="bloc-label">
-                        <h5>Afficher les secondes</h5> 
+                        <h5>Afficher les secondes</h5>
                         <label class="switch">
                             <input id="second" type="checkbox">
                             <span class="slider round">
@@ -79,7 +79,7 @@ export class Settings extends AppHandler {
                 <section>
                     <h3>Réseau</h3>
                     <div class="bloc-label">
-                        <h5>Afficher la latence</h5> 
+                        <h5>Afficher la latence</h5>
                         <label class="switch">
                             <input id="network" type="checkbox">
                             <span class="slider round">
@@ -91,7 +91,7 @@ export class Settings extends AppHandler {
                 <section>
                     <h3>Batterie</h3>
                     <div class="bloc-label">
-                        <h5>Afficher la batterie</h5> 
+                        <h5>Afficher la batterie</h5>
                         <label class="switch">
                             <input id="battery" type="checkbox">
                             <span class="slider round">
@@ -102,7 +102,7 @@ export class Settings extends AppHandler {
                 <section>
                     <h3>Weather</h3>
                     <div class="bloc-label">
-                        <h5>Afficher la la meteo</h5> 
+                        <h5>Afficher la la meteo</h5>
                         <label class="switch">
                             <input id="weather" type="checkbox">
                             <span class="slider round">
@@ -230,12 +230,12 @@ const saveSettings = ()=> {
             document.getElementById("showBattery")!.hidden = true;
         }
 
-    }); 
+    });
 
     weather.addEventListener("change", () => {
         settings.weather.showWeather = weather.checked;
         localStorage.setItem("settings", JSON.stringify(settings));
-        console.log(document.getElementById("showWeather")!.hidden)
+
         //add hidden visibility to battery percent
         if (weather.checked) {
             document.getElementById("showWeather")!.style.visibility = "visible";

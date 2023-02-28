@@ -35,11 +35,24 @@ body {
                     width: fit-content;
                     justify-content: flex-start;
                     gap: 0.33rem;
+                    @media screen and (max-width: 768px) {
+                        display: none;
+                    }
                 }
 
                 &.right-side {
                     justify-content: flex-end;
                     gap: 0.33rem;
+                    @media screen and (max-width: 768px) {
+                        #showNetwork {
+                            display: none;
+                        }
+
+                        #showBattery {
+                            display: contents;
+                            gap: 0.5rem;
+                        }
+                    }
                 }
 
                 .weather {
@@ -52,6 +65,9 @@ body {
                     margin-left: auto;
                     span {
                         margin-right: 0;
+                    }
+                    @media screen and (max-width: 768px) {
+                        margin: 0;
                     }
                 }
             }

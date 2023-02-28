@@ -25,7 +25,6 @@ function getBatteryStatus() {
         if (batteryLabel) {
             batteryLabel.textContent = Math.ceil(battery.level * 100) + '%';
         }
-   
         
         setInterval(() => {
             console.log(battery.level);
@@ -37,7 +36,5 @@ function getBatteryStatus() {
         }
     );
 }
-  
-getBatteryStatus();
 
-  
+getBatteryStatus();
