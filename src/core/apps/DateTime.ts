@@ -13,6 +13,7 @@ const updateCurrrentDate = (): void => {
 
                     const currentDay : String | number = day < 10 ? `0${day}` : day;
                     const currentMonth : String | number = month < 10 ? `0${month}` : month;
+                    console.log(theDate)
                     const currentYear : String | number = year < 10 ? `0${year}` : year;
 
                     if (localStorage.getItem("settings") === null || localStorage.getItem("settings") === undefined) {
