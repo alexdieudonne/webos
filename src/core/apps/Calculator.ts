@@ -1,4 +1,4 @@
-import { AppHandler, Window } from "../lib/AppHandler";
+import { AppHandler } from "../lib/AppHandler";
 import "../scss/calculator.scss"
 
 export class Calculator extends AppHandler {
@@ -52,9 +52,9 @@ export class Calculator extends AppHandler {
 const calculatorHandle = ()=> {
     const display: HTMLDivElement | null = document.querySelector('#display');
     const keys: HTMLDivElement | null = document.querySelector('#keys');
-    const operators = document.querySelectorAll('.operator');
+    //const operators = document.querySelectorAll('.operator');
     const cleared: HTMLButtonElement | null = document.querySelector('#clear');
-    const cross: HTMLButtonElement | null = document.querySelector('#app-main')
+    //const cross: HTMLButtonElement | null = document.querySelector('#app-main')
 
     //Declare variables to be used later
     let firstOperand: number | null,
@@ -128,7 +128,7 @@ const calculatorHandle = ()=> {
         //If the number is too large, convert it to scientific notation.
         else num = parseInt(num.toExponential());
         //Adjust the font size of the display so the number fits.
-        if (num.toString().replace(/[-\.]/g, '').length >= 8) { console.log(num.toString().replace(/[-\.]/g, '').length); display!.style.fontSize = '53px'; }
+        if (num.toString().replace(/[-\.]/g, '').length >= 8) { display!.style.fontSize = '53px'; }
         return num;
     }
 
@@ -154,7 +154,6 @@ const calculatorHandle = ()=> {
     function operands(operand: string | number | null, value: number | null) {
         if (operand && operand.toString().replace(/[-\.]/g, '').length >= 7) display!.style.fontSize = '53px';
         if (operand && operand.toString().replace(/[-\.]/g, '').length >= 9) {
-            console.log('should just return')
             return operand;
         }
         let result: string | undefined = operand ? operand + '' + value : value?.toString();

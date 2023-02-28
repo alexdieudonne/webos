@@ -19,12 +19,7 @@ const options = {
   
   function success(pos: pos) {
     const crd = pos.coords;
-  
-    // console.log('Your current position is:');
-    // console.log(`Latitude : ${crd.latitude}`);
-    // console.log(`Longitude: ${crd.longitude}`);
-    // console.log(`More or less ${crd.accuracy} meters.`);
-
+    
     const key = "ee49d77f8390918fc5dc719252e12c19";
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${crd.latitude}&lon=${crd.longitude}&appid=${key}&units=metric`;
 
@@ -35,13 +30,17 @@ const options = {
         // console.log(data);
         const { main, name, weather} = data;
         const { temp } = main;
-        const { icon, description } = weather[0];
+        const { icon } = weather[0];
         const iconUrl = `https://openweathermap.org/img/w/${icon}.png`;
        
-        document.querySelector('.weather-icon').src = iconUrl;
-        document.querySelector('.weather-temp').textContent = Math.ceil(temp) + '°C';
+
+        const weatherIcon = document.querySelector('.weather-icon');
+        if (weatherIcon)
+            weatherIcon.setAttribute('src', iconUrl);
+       
+        document.querySelector('.weather-temp')!.textContent = Math.ceil(temp) + '°C';
         const city =  name.split(' ')[0];
-        document.querySelector('.weather-location').textContent = city;
+        document.querySelector('.weather-location')!.textContent = city;
     
         
     }
@@ -51,7 +50,7 @@ const options = {
   }
 
   function error(err: err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
+    console.log(`ERROR(${err.code}): ${err.message}`);
   }
   
 navigator.geolocation.getCurrentPosition(success, error, options);

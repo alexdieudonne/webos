@@ -7,6 +7,7 @@ function checkLatency() {
   fetch("https://jsonplaceholder.typicode.com/todos/1")
     .then(response => response.json())
     .then(data => {
+      data 
       const latency = performance.now() - startTime; // calculate the latency
       // console.log(`Latency: ${ Math.round(latency)} ms`);
       // Display the latency on the page, e.g. update a DOM element

@@ -29,7 +29,7 @@ function create_app(name: string, image: string, id: string, render?: string, ha
 
     app.classList.add("application")
     app.id = id
-    app.ondblclick = (((ev: any) => { window_open(id, render, handler) }));
+    app.ondblclick = ((() => { window_open(id, render, handler) }));
     app.oncontextmenu = e => {
         open_menu(e)
     }
@@ -78,7 +78,7 @@ function handle() {
     let offset: number[] = []
     hide(school_os_wd as HTMLElement)
     const scl_os_wd: HTMLDivElement | null = document.querySelector(".school-os-wd")
-    window.onclick = e => {
+    window.onclick = () => {
         if (menu?.classList.contains("active")) {
             menu?.classList.remove("active")
         }
@@ -160,21 +160,23 @@ function init_window() {
     const cross: HTMLButtonElement | null = document.querySelector('#cross')
 
     hide(shorter as HTMLElement)
-    maximize!.onclick = e => {
+    maximize!.onclick = () => {
         maximize_window()
     }
-    shorter!.onclick = e => {
+    shorter!.onclick = () => {
         shorter_window()
     }
-    cross!.onclick = e => {
+    cross!.onclick = () => {
         hide(school_os_wd as HTMLElement)
     }
+
+    cross!.onclick 
 }
 
 function maximize_window() {
     const school_os_wd: HTMLDivElement | null = document.querySelector(".school-os-wd")
     const shorter: HTMLButtonElement | null = document.querySelector('#shorter')
-    const maximize: HTMLButtonElement | null = document.querySelector('#maximize')
+    //const maximize: HTMLButtonElement | null = document.querySelector('#maximize')
 
     show(shorter as HTMLElement)
     //close(maximize as HTMLElement)

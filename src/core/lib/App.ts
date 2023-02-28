@@ -10,6 +10,7 @@ export default class App {
         const app = document.querySelector<HTMLDivElement>("#app")!;
         initApp()
 
+        const locked = sessionStorage.getItem('locked');
 
         app.innerHTML = `
           ${new Header}
