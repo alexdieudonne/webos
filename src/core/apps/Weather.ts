@@ -47,13 +47,6 @@ const options = {
    
   
   }
-
-  function error(err: err) {
-    console.log(`ERROR(${err.code}): ${err.message}`);
-  }
-  
-
-  
 //get the position via ipapi https://ipapi.co/json/
 fetch('https://ipapi.co/json/')
   .then(response => response.json())
