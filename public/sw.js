@@ -47,7 +47,10 @@ self.addEventListener("install", (event) => {
         "https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1217&q=80",
         "https://images.pexels.com/photos/1743366/pexels-photo-1743366.jpeg?auto=compress&cs=tinysrgb",
         "https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap",
-        " https://ipapi.co/json/",
+        "https://ipapi.co/json/",
+        "https://api.openweathermap.org/data/2.5/weather?lat=48.8323&lon=2.4075&appid=ee49d77f8390918fc5dc719252e12c19&units=metric",
+        "assets/favicon.17e50649.svg",
+        
       ]);
     })
     .catch((error) => {
