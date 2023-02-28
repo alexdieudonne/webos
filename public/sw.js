@@ -16,6 +16,13 @@ self.addEventListener("install", (event) => {
         "/index.html",
         data['index.html']['css'][0],
         data['index.html']['file'],
+        "/css/calculator.css",
+        "/css/clock.css",
+        "/css/global.css",
+        "/css/home.css",
+        "/css/lock.css",
+        "/css/settings.css",
+        "/css/tictactoe.css",
         "https://jsonplaceholder.typicode.com/todos/1",
         "/img/Battery-full.png",
         "/img/Battery.png", 
@@ -35,9 +42,15 @@ self.addEventListener("install", (event) => {
         "/img/icons/clock.svg", 
         "/img/icons/calculator.svg", 
         "/img/icons/safari.png",
+        "/img/Background.png",
+        "/img/icons/sun.png",
         "https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1217&q=80",
         "https://images.pexels.com/photos/1743366/pexels-photo-1743366.jpeg?auto=compress&cs=tinysrgb",
         "https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap",
+        "https://ipapi.co/json/",
+        "https://api.openweathermap.org/data/2.5/weather?lat=48.8323&lon=2.4075&appid=ee49d77f8390918fc5dc719252e12c19&units=metric",
+        "assets/favicon.17e50649.svg",
+        
       ]);
     })
     .catch((error) => {
