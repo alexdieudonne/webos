@@ -338,8 +338,3 @@ const calculatorHandle = () => {
     }
 }
 
-
-enum SessionCalculator {
-    history_calculator
-}
-
