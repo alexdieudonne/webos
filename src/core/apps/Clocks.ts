@@ -169,8 +169,6 @@ const clockHandle = () => {
             });
         }
     });
-
-
 }
 
 // Start the timer when the start button is clicked
@@ -227,6 +225,8 @@ const stopWatch = () => {
     const lapNumber = lapList!.children.length + 1;
     lap.textContent = `Lap ${lapNumber}: ${stopwatchTimer!.textContent}`;
     lapList!.appendChild(lap);
+
+
 }
 
 // Reset the timer when the reset button is clicked
@@ -301,6 +301,13 @@ const startTimer = () => {
                         body: 'Your timer has ended',
                         vibrate: [1000, 1000, 1000],
                     });
+
+                    const audio = new Audio('/audio/notif.mp3');
+                    audio.loop = true;
+                    audio.play();
+                    setTimeout(() => {
+                        audio.pause();
+                    }, 3000);
 
                     console.log(notification);
                 }

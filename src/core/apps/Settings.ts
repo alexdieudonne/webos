@@ -4,6 +4,10 @@ import "../scss/settings.scss"
 export class Settings extends AppHandler {
     constructor() {
         super({ icon: "/img/icons/settings.svg", name: "Settings", handler: saveSettings });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            changeDarkMode();
+        });
     }
 
     render() {
@@ -262,28 +266,8 @@ const saveSettings = ()=> {
     darkMode.addEventListener("change", () => {
         settings.darkMode.darkMode = darkMode.checked;
         localStorage.setItem("settings", JSON.stringify(settings));
-        const header = document.getElementById("header") as HTMLDivElement;
-        const app = document.getElementById("app-main") as HTMLDivElement;
 
-        if (darkMode.checked) {
-            console.log("dark mode on");
-            // Handle header
-            header.style.backgroundColor = "#1A1B26";
-            header.style.color = "white";
-
-            // Handle app
-            app.style.backgroundColor = "#24252d";
-            app.style.color = "white";
-        } else {
-            console.log("dark mode off");
-            // Handle header
-            header.style.backgroundColor = "#507e93";
-            header.style.color = "black";
-
-            // Handle app
-            app.style.backgroundColor = "#f2f2f2";
-            app.style.color = "black";
-        }
+        changeDarkMode();
     });
 
     let download = document.getElementById("download") as HTMLParagraphElement;
@@ -323,4 +307,33 @@ function importSettingFromJSON() {
         }
     }
     input.click();
+}
+
+function changeDarkMode() {
+    const header = document.getElementById("header") as HTMLDivElement;
+    const app = document.getElementById("app-main") as HTMLDivElement;
+
+    // Get dark mode from local storage
+    let settings = JSON.parse(localStorage.getItem("settings") as string);
+    let darkMode = settings.darkMode.darkMode;
+
+    if (darkMode) {
+        console.log("dark mode on");
+        // Handle header
+        header.style.backgroundColor = "#1A1B26";
+        header.style.color = "white";
+
+        // Handle app
+        app.style.backgroundColor = "#24252d";
+        app.style.color = "white";
+    } else {
+        console.log("dark mode off");
+        // Handle header
+        header.style.backgroundColor = "#507e93";
+        header.style.color = "black";
+
+        // Handle app
+        app.style.backgroundColor = "#f2f2f2";
+        app.style.color = "black";
+    }
 }
