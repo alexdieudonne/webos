@@ -10,6 +10,8 @@
     &-main {
         @include u.full-size();
         overflow-y: scroll;
+        transition: background 0.25s ease-in-out, color 0.25s ease-in-out;
+
         &::-webkit-scrollbar {
             display: none;
         }

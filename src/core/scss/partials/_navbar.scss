@@ -9,6 +9,7 @@ body {
     header {
         height: 60px;
         background: c.$paleblue;
+        transition: background 0.25s ease-in-out;
         .navbar {
             @include u.flex($justify-content: space-between, $align-items: center);
             min-height: 60px;
@@ -33,6 +34,13 @@ body {
                     width: fit-content;
                     justify-content: flex-start;
                     gap: 0.33rem;
+                    #darkModeIcon {
+                        margin-right: 1rem;
+                        img {
+                            width: 1.5rem;
+                        }
+                    }
+
                     @media screen and (max-width: 768px) {
                         display: none;
                     }
