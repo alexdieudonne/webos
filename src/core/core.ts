@@ -19,11 +19,6 @@ const appState = {
         delay: .4
     }
 }
-
-async function storeState() {
-    //appState.
-}
-
 export async function storeSessionState(item: string) {
     let itemArr: string[] = [];
     const oldArray = await retrieveStoreSessionState();
