@@ -1,3 +1,4 @@
+import { retrieveStoreSessionState, storeSessionState } from "../core";
 import { AppHandler } from "../lib/AppHandler";
 import "../scss/calculator.scss"
 
@@ -9,7 +10,7 @@ export class Calculator extends AppHandler {
 
     render() {
         return (
-            `<div class="calculator" id="calculator">
+            `<div id="calculator" class="calculator" id="calculator">
                 <div class="display">
                     <div id="display">0</div>
                 </div>
@@ -43,13 +44,60 @@ export class Calculator extends AppHandler {
                         <button id="decimal" value=".">.</button>
                         <button id="equals">=</button>
                     </div>
+                    <div class="show-history">
+                        <button type="button" id="show-history">Voir l'historique</button>
+                        <div id='history_' style="display:none">
+                            <button type="button" id="hide-history">Cacher l'historique</button>
+                            <div id="history_spans"></div>
+                        </div>
+                    </div>
                 </div>
-        </div>`
+        
+        </div>
+    `
         )
     }
 }
 
-const calculatorHandle = ()=> {
+const handleHistory = () => {
+    // Get the button element
+    const popupButton = document.getElementById('show-history');
+
+    // Add a click event listener to the button
+    popupButton?.addEventListener('click', async function () {
+        const history_ = document.getElementById('history_');
+        const divD = document.createElement("div");
+        divD.style.display = 'flex'
+        divD.style.flexDirection = 'column'
+        const hideButton = document.getElementById('hide-history');
+        
+        if (history_?.style.display === "none") {
+            const arrSessionResults = await retrieveStoreSessionState()
+            history_!.style.display = 'flex'
+            hideButton?.addEventListener('click', async function () {
+                history_!.style.display = 'none'
+            })
+            const history_spans = document.getElementById('history_spans');
+
+            for (const string of arrSessionResults!) {
+                // Create a new span element for all strings
+                const newSpan = document.createElement("span");
+                // Set the text content of the span element to the string
+                newSpan.textContent = string;
+                // Append the span element to the div element
+                divD?.appendChild(newSpan);
+                divD?.appendChild(newSpan);
+                
+            }
+            history_spans!.innerHTML = '';
+            history_spans?.appendChild(divD)
+        }
+    });
+
+}
+
+const calculatorHandle = () => {
+    handleHistory();
     const display: HTMLDivElement | null = document.querySelector('#display');
     const keys: HTMLDivElement | null = document.querySelector('#keys');
     //const operators = document.querySelectorAll('.operator');
@@ -111,8 +159,10 @@ const calculatorHandle = ()=> {
             case '*':
                 result = operand1 * operand2;
         }
+
         //The following code aims to correct floating point imprecision
         result = Math.round(parseFloat(result.toString()) * Math.pow(10, 10)) / Math.pow(10, 10);
+        storeSessionState(`${operand1} ${operator} ${operand2} = ${result}`)
         display!.innerHTML = format(result).toString();
         return result;
     }
@@ -122,15 +172,16 @@ const calculatorHandle = ()=> {
         num = +num;
         //If the result is too long, round it to 8 decimal places or 10 digits.
         if ((num <= 999999999 && num >= -999999999) || num.toString().replace(/[-\.]/g, '').length < 10) {
+        
             //toLocaleString is used to format the number with the correct places complete with appropriate commas.
-            num = parseInt(num.toLocaleString('en-US', { maximumSignificantDigits: 10, maximumFractionDigits: 8, minimumFractionDigits: 8 }));
-        } else if (num.toExponential().toString().length > 7) num = parseInt(num.toExponential(5))
-        //If the number is too large, convert it to scientific notation.
-        else num = parseInt(num.toExponential());
+            num =  parseFloat(num.toString().replace(/\B(?=(\d{4})+(?!\d))/g, '.'));
+
+        } 
         //Adjust the font size of the display so the number fits.
         if (num.toString().replace(/[-\.]/g, '').length >= 8) { display!.style.fontSize = '53px'; }
         return num;
     }
+    
 
     //This function takes the current number value of a click or keypress event.
     function currentNumber(num: number) {
@@ -285,5 +336,10 @@ const calculatorHandle = ()=> {
         isNegative = false;
         wasEqualed = false;
     }
+}
+
+
+enum SessionCalculator {
+    history_calculator
 }
 

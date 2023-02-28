@@ -20,7 +20,25 @@ const appState = {
     }
 }
 
-
-async function storeState(){
+async function storeState() {
     //appState.
+}
+
+export async function storeSessionState(item: string) {
+    let itemArr: string[] = [];
+    const oldArray = await retrieveStoreSessionState();
+    if(oldArray){
+        itemArr = oldArray
+    }
+    itemArr.push(item)
+    sessionStorage.setItem('calculator', JSON.stringify(itemArr))
+}
+
+export async function retrieveStoreSessionState(): Promise<Array<string> | null> {
+    try {
+        return JSON.parse(sessionStorage.getItem('calculator')?? "")
+    } catch (error) {
+        return []
+    }
+    
 }
