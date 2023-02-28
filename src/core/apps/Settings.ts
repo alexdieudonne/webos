@@ -321,7 +321,7 @@ function changeDarkMode() {
 
         // Handle app
         if(app) {
-            app.style.backgroundColor = "#1A1B26";
+            app.style.backgroundColor = "#232431";
             app.style.color = "white";
         }
     } else {

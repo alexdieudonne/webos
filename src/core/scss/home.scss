@@ -75,8 +75,10 @@
         position: absolute;
         top: 20vh;
         left: 20%;
-        min-width: 400px;
-        min-height: 60vh;
+        height: 0px;
+        width: 0px;
+        min-width: 50vw; // Override
+        min-height: 60vh; // Override
         background-color: c.$white;
         overflow: hidden;
         resize: both;

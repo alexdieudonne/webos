@@ -195,7 +195,9 @@ body header .navbar > div .weather span {
   position: absolute;
   top: 20vh;
   left: 20%;
-  min-width: 400px;
+  height: 0px;
+  width: 0px;
+  min-width: 50vw;
   min-height: 60vh;
   background-color: #F2F2F2;
   overflow: hidden;
