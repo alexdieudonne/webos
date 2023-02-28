@@ -77,6 +77,17 @@ export class Settings extends AppHandler {
                     </div>
                 </section>
                 <section>
+                    <h3>Dark Mode</h3>
+                    <div class="bloc-label">
+                        <h5>Mode sombre</h5>
+                        <label class="switch">
+                            <input id="darkMode" type="checkbox">
+                            <span class="slider round">
+                            </span>
+                        </label>
+                    </div>
+                </section>
+                <section>
                     <h3>Réseau</h3>
                     <div class="bloc-label">
                         <h5>Afficher la latence</h5>
@@ -139,6 +150,9 @@ let savedSettings = {
     },
     weather: {
         showWeather: true,
+    },
+    darkMode: {
+        darkMode: false,
     }
 }
 
@@ -161,6 +175,7 @@ const saveSettings = ()=> {
     let latency = document.getElementById("network") as HTMLInputElement;
     let battery = document.getElementById("battery") as HTMLInputElement;
     let weather = document.getElementById("weather") as HTMLInputElement;
+    let darkMode = document.getElementById("darkMode") as HTMLInputElement;
 
     if(!date || !day || !month || !year || !hour || !minute || !second || !latency || !battery) console.log("Error while getting elements");
 
@@ -174,6 +189,7 @@ const saveSettings = ()=> {
     latency.checked = settings.network.showLatency;
     battery.checked = settings.battery.showBattery;
     weather.checked = settings.weather.showWeather;
+    darkMode.checked = settings.darkMode.darkMode;
 
     date.addEventListener("change", () => {
         settings.date.showDate = date.checked;
@@ -242,7 +258,22 @@ const saveSettings = ()=> {
         } else {
             document.getElementById("showWeather")!.style.visibility = "hidden";
         }
+    });
 
+    darkMode.addEventListener("change", () => {
+        settings.darkMode.darkMode = darkMode.checked;
+        localStorage.setItem("settings", JSON.stringify(settings));
+        const app = document.getElementById("app-main") as HTMLDivElement;
+
+        if (darkMode.checked) {
+            console.log("dark mode on");
+            app.style.backgroundColor = "#24252d";
+            app.style.color = "white";
+        } else {
+            console.log("dark mode off");
+            app.style.backgroundColor = "#f2f2f2";
+            app.style.color = "black";
+        }
     });
 
     let download = document.getElementById("download") as HTMLParagraphElement;
