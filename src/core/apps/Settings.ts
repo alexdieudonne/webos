@@ -161,7 +161,6 @@ let savedSettings = {
 }
 
 const saveSettings = ()=> {
-
     if (localStorage.getItem("settings") === null || localStorage.getItem("settings") === undefined) {
         localStorage.setItem("settings", JSON.stringify(savedSettings));
     }

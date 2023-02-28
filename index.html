@@ -6,7 +6,29 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="stylesheet" href="/css/home.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>WebOS</title>
+    <script
+    src="https://browser.sentry-cdn.com/5.16.1/bundle.min.js"
+    integrity="sha384-XeIbINcUQP10HtmVHwZigannjNDpoQRe+uhAoW9J5HU5dHFpilP164LjqO78xtIB"
+    crossorigin="anonymous">
+    </script>
+    <script type="text/javascript">
+        Sentry.init({
+            dsn: "https://c95d4f9c506a4e1ab9c27c593ee4d2e8@o4504758689792000.ingest.sentry.io/4504758691233792",
+            beforeSend(event, hint) {
+                if (event.exception) {
+                    Sentry.showReportDialog({ eventId: event.event_id });
+                }
+                return event;
+            }
+        });
+        console.log("Sentry initialized")
+        function crashAndReportError() {
+            console.log('crashAndReportError');
+            Sentry.captureException(new Error('Congrats, you broke it'));
+            Sentry.showReportDialog({ })
+        }
+    </script>
 </head>
 
 <body>
