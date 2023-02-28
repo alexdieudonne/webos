@@ -36,11 +36,28 @@ export class Clocks extends AppHandler {
                         </div>
                     </div>
                 </div>
+
+                <div class="timer">
+                    <h2 class="timer-title">Timer</h2>
+
+                    <div class="timer-input">
+                        <input type="number" name="hour" id="timer-hour" placeholder="Hour">
+                        <input type="number" name="minute" id="timer-minute" placeholder="Minute" max="60">
+                        <input type="number" name="second" id="timer-second" placeholder="Second" max="60">
+                    </div>
+
+                    <div class="timer-controls">
+                        <button id="startTimer">Start</button>
+                        <button id="stopTimer">Stop</button>
+                        <button id="resetTimer">Reset</button>
+                    </div>
+                </div>
             </section>`
         )
     }
 }
 let timer = 0;
+let currentTimer = 0;
 
 const clockHandle = () => {
 
@@ -79,7 +96,6 @@ const clockHandle = () => {
             document.querySelector<HTMLElement>('.clock .second')!.style.transform = `translate(-50%, -50%) rotate(${((secondTrans  as any/ 60) * 360) + 90}deg)`;
 
         }
-       
 
         // Rotation for the clock hands
         const hourDeg = ((hour / 12) * 360) + 90;
@@ -119,13 +135,18 @@ const clockHandle = () => {
     // Update the clock every second if the clock exists
     document.querySelector('.clock') ? setInterval(updateCurrentTime, 1000) : null;
 
-    document.querySelector('#startWatch')!.addEventListener('click', startTimer);
-    document.querySelector('#stopWatch')!.addEventListener('click', stopTimer);
-    document.querySelector('#resetWatch')!.addEventListener('click', resetTimer);
+    document.querySelector('#startWatch')!.addEventListener('click', startWatch);
+    document.querySelector('#stopWatch')!.addEventListener('click', stopWatch);
+    document.querySelector('#resetWatch')!.addEventListener('click', resetWatch);
+
+    document.querySelector('#startTimer')!.addEventListener('click', startTimer);
+    document.querySelector('#stopTimer')!.addEventListener('click', stopTimer);
+    document.querySelector('#resetTimer')!.addEventListener('click', resetTimer);
+
 }
 
 // Start the timer when the start button is clicked
-const startTimer = () => {
+const startWatch = () => {
 
     // If the timer is already running, do nothing
     if (timer) return;
@@ -133,7 +154,6 @@ const startTimer = () => {
     // Increment the timer
     timer = setInterval(() => {
         const stopwatchTimer = document.querySelector('.stopwatch-time');
-        
         let time = stopwatchTimer?.textContent!.split(':');
         let hour = parseInt(time![0]);
         let minute = parseInt(time![1]);
@@ -165,7 +185,7 @@ const startTimer = () => {
 }
 
 // Stop the timer when the stop button is clicked
-const stopTimer = () => {
+const stopWatch = () => {
     clearInterval(timer);
     timer = 0;
 
@@ -179,12 +199,10 @@ const stopTimer = () => {
     const lapNumber = lapList!.children.length + 1;
     lap.textContent = `Lap ${lapNumber}: ${stopwatchTimer!.textContent}`;
     lapList!.appendChild(lap);
-
-
 }
 
 // Reset the timer when the reset button is clicked
-const resetTimer = () => {
+const resetWatch = () => {
     const stopwatchTimer = document.querySelector('.stopwatch-time');
     clearInterval(timer);
     stopwatchTimer!.textContent = '00:00:00';
@@ -195,6 +213,94 @@ const resetTimer = () => {
 
 }
 
+// Start the timer when the start button is clicked
+const startTimer = () => {
+    const timerHour = document.querySelector('#timer-hour') as HTMLInputElement;
+    const timerMinute = document.querySelector('#timer-minute') as HTMLInputElement;
+    const timerSecond = document.querySelector('#timer-second') as HTMLInputElement;
+
+    // If the timer is already running, do nothing
+    if (currentTimer) return;
+
+    currentTimer = setInterval(() => {
+        let hour = timerHour.value ? parseInt(timerHour.value) : 0;
+        let minute = timerMinute.value ? parseInt(timerMinute.value) : 0;
+        let second = timerSecond.value ? parseInt(timerSecond.value) : 0;
+
+        second--;
+
+        // Handle seconds
+        if (second > 60) {
+            second = 60;
+        } else if (second < 0) {
+            second = 59;
+            minute--;
+        }
+
+        // Handle minutes
+        if (minute > 60) {
+            minute = 60;
+        } else if (minute < 0) {
+            minute = 59;
+            hour--;
+        }
+
+        // Handle display of time below 10
+        if (hour < 10) {
+            hour = parseInt(`0${hour}`);
+        } else if (minute < 10) {
+            minute = parseInt(`0${minute}`);
+        } else if (second < 10) {
+            second = parseInt(`0${second}`);
+        }
+
+        // @ts-ignore
+        timerHour.value = hour;
+        // @ts-ignore
+        timerMinute.value = minute;
+        // @ts-ignore
+        timerSecond.value = second;
+
+        // Handle the notification
+        if (hour === 0 && minute === 0 && second === 0) {
+            if (Notification.permission === 'granted') {
+                console.log("Notification granted:", Notification.permission);
+                new Notification('Timer Complete', {
+                    body: 'Your timer has finished',
+                });
+            } else if (Notification.permission !== 'denied') {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        new Notification('Timer Complete', {
+                            body: 'Your timer has finished',
+                        });
+                    }
+                });
+            }
+
+            clearInterval(currentTimer);
+            currentTimer = 0;
+        }
+    }, 1000);
+}
+
+const stopTimer = () => {
+    clearInterval(currentTimer);
+    currentTimer = 0;
+}
+
+const resetTimer = () => {
+    const timerHour = document.querySelector('#timer-hour') as HTMLInputElement;
+    const timerMinute = document.querySelector('#timer-minute') as HTMLInputElement;
+    const timerSecond = document.querySelector('#timer-second') as HTMLInputElement;
+
+    clearInterval(currentTimer);
+    currentTimer = 0;
+
+    timerHour.value = '';
+    timerMinute.value = '';
+    timerSecond.value = '';
+}
 
 function isString(value:  number | String ): value is string {
     return typeof value === 'string';
