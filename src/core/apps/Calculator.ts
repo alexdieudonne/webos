@@ -1,4 +1,4 @@
-import { AppHandler, Window } from "../lib/AppHandler";
+import { AppHandler } from "../lib/AppHandler";
 import "../scss/calculator.scss"
 
 export class Calculator extends AppHandler {
@@ -52,9 +52,9 @@ export class Calculator extends AppHandler {
 const calculatorHandle = ()=> {
     const display: HTMLDivElement | null = document.querySelector('#display');
     const keys: HTMLDivElement | null = document.querySelector('#keys');
-    const operators = document.querySelectorAll('.operator');
+    //const operators = document.querySelectorAll('.operator');
     const cleared: HTMLButtonElement | null = document.querySelector('#clear');
-    const cross: HTMLButtonElement | null = document.querySelector('#app-main')
+    //const cross: HTMLButtonElement | null = document.querySelector('#app-main')
 
     //Declare variables to be used later
     let firstOperand: number | null,

@@ -35,13 +35,17 @@ const options = {
         // console.log(data);
         const { main, name, weather} = data;
         const { temp } = main;
-        const { icon, description } = weather[0];
+        const { icon } = weather[0];
         const iconUrl = `https://openweathermap.org/img/w/${icon}.png`;
        
-        document.querySelector('.weather-icon').src = iconUrl;
-        document.querySelector('.weather-temp').textContent = Math.ceil(temp) + '°C';
+
+        const weatherIcon = document.querySelector('.weather-icon');
+        if (weatherIcon)
+            weatherIcon.setAttribute('src', iconUrl);
+       
+        document.querySelector('.weather-temp')!.textContent = Math.ceil(temp) + '°C';
         const city =  name.split(' ')[0];
-        document.querySelector('.weather-location').textContent = city;
+        document.querySelector('.weather-location')!.textContent = city;
     
         
     }

@@ -22,34 +22,41 @@ export class Clocks extends AppHandler {
     }
 }
 const clockHandle = () => {
-    console.log("Hello World, from Clocks.ts");
-
-    const stopwatchTimer = document.querySelector('.stopwatch-time');
-    let timer = 0;
-
     const updateCurrentTime = () => {
 
         // Variables
-        const hourHand = document.querySelector('.clock .hour');
-        const minuteHand = document.querySelector('.clock .minute');
-        const secondHand = document.querySelector('.clock .second');
+        const hourHand = document.querySelector<HTMLElement>('.clock .hour');
+        const minuteHand = document.querySelector<HTMLElement>('.clock .minute');
+        const secondHand = document.querySelector<HTMLElement>('.clock .second');
 
         const date = new Date();
-        let hour = date.getHours();
-        let minute = date.getMinutes();
-        let second = date.getSeconds();
-
-        hour = hour < 10 ? `0${hour}` : hour;
-        minute = minute < 10 ? `0${minute}` : minute;
-        second = second < 10 ? `0${second}` : second;
-
+        let hour = date.getHours() ;
+        let minute = date.getMinutes() ;
+        let second = date.getSeconds() ;
+        
+        const hourTrans : String | number = hour < 10 ?  String(hour).padStart(2, '0') : hour;
+        const minuteTrans : String | number = minute < 10 ?  String(minute).padStart(2, '0') : minute;
+        const secondTrans: String | number  = second < 10 ? String(second).padStart(2, '0') : second;
         // Update the clock
         const getTime = document.querySelector('.current-time2');
-        getTime.textContent = `${hour}:${minute}:${second}`;
-        document.querySelector('.clock .hour').style.transform = `translate(-50%, -50%) rotate(${((hour / 12) * 360) + 90}deg)`;
-        document.querySelector('.clock .minute').style.transform = `translate(-50%, -50%) rotate(${((minute / 60) * 360) + 90}deg)`;
-        document.querySelector('.clock .second').style.transform = `translate(-50%, -50%) rotate(${((second / 60) * 360) + 90}deg)`;
+        if (!getTime) {
+            return;
+        }
 
+        getTime.textContent = `${hourTrans}:${minuteTrans}:${secondTrans}`;
+        
+
+        if(isString(hourTrans) || isString(minuteTrans) || isString(secondTrans)) {
+            document.querySelector<HTMLElement>('.clock .hour')!.style.transform  = `translate(-50%, -50%) rotate(${((+hourTrans  as any/ 12) * 360) + 90}deg)` ;
+            document.querySelector<HTMLElement>('.clock .minute')!.style.transform = `translate(-50%, -50%) rotate(${((+minuteTrans as any / 60) * 360) + 90}deg)`;
+            document.querySelector<HTMLElement>('.clock .second')!.style.transform = `translate(-50%, -50%) rotate(${((+secondTrans  as any/ 60) * 360) + 90}deg)`;
+        }else {
+            document.querySelector<HTMLElement>('.clock .hour')!.style.transform  = `translate(-50%, -50%) rotate(${((hourTrans  as any/ 12) * 360) + 90}deg)` ;
+            document.querySelector<HTMLElement>('.clock .minute')!.style.transform = `translate(-50%, -50%) rotate(${((minuteTrans as any / 60) * 360) + 90}deg)`;
+            document.querySelector<HTMLElement>('.clock .second')!.style.transform = `translate(-50%, -50%) rotate(${((secondTrans  as any/ 60) * 360) + 90}deg)`;
+
+        }
+       
 
         // Rotation for the clock hands
         const hourDeg = ((hour / 12) * 360) + 90;
@@ -57,34 +64,40 @@ const clockHandle = () => {
         const secondDeg = ((second / 60) * 360) + 90;
 
         // Reset the clock hands
-        secondDeg === 90 ? secondHand.style.transition = 'none' : secondHand.style.transition = 'all 0.1s ease';
-        minuteDeg === 90 ? minuteHand.style.transition = 'none' : minuteHand.style.transition = 'all 0.2s ease';
-        hourDeg === 90 ? hourHand.style.transition = 'none' : hourHand.style.transition = 'all 0.3s ease';
+        secondDeg === 90 ? secondHand!.style.transition = 'none' : secondHand!.style.transition = 'all 0.1s ease';
+        minuteDeg === 90 ? minuteHand!.style.transition = 'none' : minuteHand!.style.transition = 'all 0.2s ease';
+        hourDeg === 90 ? hourHand!.style.transition = 'none' : hourHand!.style.transition = 'all 0.3s ease';
 
         // Rotate the clock hands
-        hourHand.style.transform = `translate(-50%, -50%) rotate(${hourDeg}deg)`;
-        minuteHand.style.transform = `translate(-50%, -50%) rotate(${minuteDeg}deg)`;
-        secondHand.style.transform = `translate(-50%, -50%) rotate(${secondDeg}deg)`;
+        hourHand!.style.transform = `translate(-50%, -50%) rotate(${hourDeg}deg)`;
+        minuteHand!.style.transform = `translate(-50%, -50%) rotate(${minuteDeg}deg)`;
+        secondHand!.style.transform = `translate(-50%, -50%) rotate(${secondDeg}deg)`;
     }
 
     // Update the time if the clock exists
     if (document.querySelector('.current-time2_hour')) {
         const getTime = document.querySelector('.current-time2_hour');
-        getTime.textContent = new Date().toLocaleTimeString('en-US', { hour12: false, hour: 'numeric', minute: 'numeric' });
-
-        setInterval(() => {
+        if (getTime) {
             getTime.textContent = new Date().toLocaleTimeString('en-US', { hour12: false, hour: 'numeric', minute: 'numeric' });
-        }, 1000);
+
+            setInterval(() => {
+                getTime.textContent = new Date().toLocaleTimeString('en-US', { hour12: false, hour: 'numeric', minute: 'numeric' });
+            }, 1000);
+        }
     }
+
 
     // Update the date if the date exists
     if (document.querySelector('.current-time2_date')) {
         const getDate = document.querySelector('.current-time2_date');
-        console.log(getDate);
-        getDate.textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
+        getDate ? getDate.textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' }) : '';
     }
 
 
     // Update the clock every second if the clock exists
     document.querySelector('.clock') ? setInterval(updateCurrentTime, 1000) : null;
+}
+
+function isString(value:  number | String ): value is string {
+    return typeof value === 'string';
 }

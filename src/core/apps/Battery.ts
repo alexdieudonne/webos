@@ -1,5 +1,7 @@
 
 function getBatteryStatus() {
+   
+    //@ts-ignore
     const navigatorWithBattery = navigator as Navigator & { getBattery: () => Promise<BatteryManager>};
     navigatorWithBattery.getBattery().then(function(battery) {
         if (!battery) {
