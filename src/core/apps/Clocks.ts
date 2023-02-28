@@ -40,15 +40,9 @@ export class Clocks extends AppHandler {
         )
     }
 }
-const stopwatchTimer = document.querySelector('.stopwatch-time');
 let timer = 0;
 
 const clockHandle = () => {
-
-
-    const stopwatchTimer = document.querySelector('.stopwatch-time');
-    let timer = 0;
-
 
     const updateCurrentTime = () => {
 
@@ -139,10 +133,11 @@ const startTimer = () => {
     // Increment the timer
     timer = setInterval(() => {
         const stopwatchTimer = document.querySelector('.stopwatch-time');
-        let time = stopwatchTimer.textContent.split(':');
-        let hour = parseInt(time[0]);
-        let minute = parseInt(time[1]);
-        let second = parseInt(time[2]);
+        
+        let time = stopwatchTimer?.textContent!.split(':');
+        let hour = parseInt(time![0]);
+        let minute = parseInt(time![1]);
+        let second = parseInt(time![2]);
 
         second++;
 
@@ -163,7 +158,8 @@ const startTimer = () => {
         // @ts-ignore
         second = second < 10 ? `0${second}` : second;
 
-        stopwatchTimer.textContent = `${hour}:${minute}:${second}`;
+        if(stopwatchTimer)
+            stopwatchTimer.textContent = `${hour}:${minute}:${second}`;
         console.log(timer)
     }, 1000);
 }
@@ -180,9 +176,9 @@ const stopTimer = () => {
     lap.classList.add('lap');
 
     // Number the lap and add it to the lap list
-    const lapNumber = lapList.children.length + 1;
-    lap.textContent = `Lap ${lapNumber}: ${stopwatchTimer.textContent}`;
-    lapList.appendChild(lap);
+    const lapNumber = lapList!.children.length + 1;
+    lap.textContent = `Lap ${lapNumber}: ${stopwatchTimer!.textContent}`;
+    lapList!.appendChild(lap);
 
 
 }
@@ -191,11 +187,11 @@ const stopTimer = () => {
 const resetTimer = () => {
     const stopwatchTimer = document.querySelector('.stopwatch-time');
     clearInterval(timer);
-    stopwatchTimer.textContent = '00:00:00';
+    stopwatchTimer!.textContent = '00:00:00';
 
     // Remove all laps from the lap list
     const lapList = document.querySelector('.lap-list');
-    lapList.innerHTML = '';
+    lapList!.innerHTML = '';
 
 }
 

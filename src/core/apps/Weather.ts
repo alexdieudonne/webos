@@ -1,8 +1,7 @@
 type pos = {
     coords: {
         latitude: number,
-        longitude: number,
-        accuracy: number
+        longitude: number
     }
 }
 
@@ -53,7 +52,15 @@ const options = {
     console.log(`ERROR(${err.code}): ${err.message}`);
   }
   
-navigator.geolocation.getCurrentPosition(success, error, options);
+
+  
+//get the position via ipapi https://ipapi.co/json/
+fetch('https://ipapi.co/json/')
+  .then(response => response.json())
+  .then(data => {
+      const { latitude, longitude } = data;
+      success({coords: {latitude, longitude}});
+  });
 
 
   
