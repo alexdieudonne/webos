@@ -2,21 +2,23 @@
 export abstract class AppHandler {
     [x: string]: any;
     constructor(props: APHandle) {
-        this.icon = props.icon;
-        this.name = props.name;
-        this.handler = props.handler
+        if(sessionStorage.getItem('locked')) {
+            this.icon = props.icon;
+            this.name = props.name;
+            this.handler = props.handler
 
-        // this.render = "";
-        const that = this
-        document.addEventListener("DOMContentLoaded", function (this: typeof that) {
-            create_app(props.name,
-                props.icon,
-                "file-sd" + props.name,
-                that.render ? that.render() : undefined,
-                this.handler
-            );
-            handle()
-        }.bind(this));
+            // this.render = "";
+            const that = this
+            document.addEventListener("DOMContentLoaded", function (this: typeof that) {
+                create_app(props.name,
+                    props.icon,
+                    "file-sd" + props.name,
+                    that.render ? that.render() : undefined,
+                    this.handler
+                );
+                handle()
+            }.bind(this));
+        }
     }
 }
 
