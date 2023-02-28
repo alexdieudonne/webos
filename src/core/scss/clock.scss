@@ -21,6 +21,14 @@ body, html {
         @include u.flex($justify-content: center, $align-items: center, $flex-direction: column);
         padding: 50px;
 
+        .clock, .stopwatch, .timer {
+            display: none;
+        }
+
+        .active-app {
+            display: block;
+        }
+
         .current-time2 {
             font-size: clamp(1.5rem, 2vw, 3rem);
             text-align: center;
@@ -51,13 +59,13 @@ body, html {
                 width: 60px;
                 height: 4px;
             }
-        
+
             &.minute {
                 left: calc(50% - 40px);
                 width: 80px;
                 height: 4px;
             }
-            
+
             &.second {
                 left: calc(50% - 60px);
                 width: 120px;
@@ -87,7 +95,7 @@ body, html {
                 }
             }
         }
-    
+
     }
 }
 

@@ -263,14 +263,25 @@ const saveSettings = ()=> {
     darkMode.addEventListener("change", () => {
         settings.darkMode.darkMode = darkMode.checked;
         localStorage.setItem("settings", JSON.stringify(settings));
+        const header = document.getElementById("header") as HTMLDivElement;
         const app = document.getElementById("app-main") as HTMLDivElement;
 
         if (darkMode.checked) {
             console.log("dark mode on");
+            // Handle header
+            header.style.backgroundColor = "#1A1B26";
+            header.style.color = "white";
+
+            // Handle app
             app.style.backgroundColor = "#24252d";
             app.style.color = "white";
         } else {
             console.log("dark mode off");
+            // Handle header
+            header.style.backgroundColor = "#507e93";
+            header.style.color = "black";
+
+            // Handle app
             app.style.backgroundColor = "#f2f2f2";
             app.style.color = "black";
         }

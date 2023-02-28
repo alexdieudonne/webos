@@ -9,7 +9,13 @@ export class Clocks extends AppHandler {
     render() {
         return (
             `<section class="clock-app">
-                <div class="clock">
+                <div class="tabs">
+                    <button class="tab active" data-tab="clock">Clock</button>
+                    <button class="tab" data-tab="stopwatch">Stopwatch</button>
+                    <button class="tab" data-tab="timer">Timer</button>
+                </div>
+
+                <div class="clock active-app">
                     <div class="background">
                         <div class="indicator hour"></div>
                         <div class="indicator minute"></div>
@@ -125,7 +131,6 @@ const clockHandle = () => {
         }
     }
 
-
     // Update the date if the date exists
     if (document.querySelector('.current-time2_date')) {
         const getDate = document.querySelector('.current-time2_date');
@@ -142,6 +147,29 @@ const clockHandle = () => {
     document.querySelector('#startTimer')!.addEventListener('click', startTimer);
     document.querySelector('#stopTimer')!.addEventListener('click', stopTimer);
     document.querySelector('#resetTimer')!.addEventListener('click', resetTimer);
+
+    // Handle the change of tabs for each app
+    document.querySelector('.tabs')!.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+
+        if (target.classList.contains('tab') && !target.classList.contains('active')) {
+            // Remove the active class from the current tab
+            document.querySelector('.tab.active')!.classList.remove('active');
+            target.classList.add('active');
+
+            const activetab = target.getAttribute('data-tab');
+            const app = document.querySelector('.clock-app')!;
+
+            // Handle the change of tabs for each app
+            app.childNodes.forEach((child) => {
+                if (child.nodeType === 1) {
+                    const childElement = child as HTMLElement;
+                    childElement.classList.contains(activetab!) ? childElement.classList.add('active-app') : childElement.classList.remove('active-app');
+                }
+            });
+        }
+    });
+
 
 }
 

@@ -9,7 +9,7 @@ export default class AppBar extends OS {
 
     render() {
         return (
-            `<header>
+            `<header id="header">
                 <div class="navbar">
 
                     <div class="left-side loading">

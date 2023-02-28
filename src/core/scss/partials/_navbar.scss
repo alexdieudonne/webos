@@ -4,13 +4,11 @@
 @use '../mixins/utils' as u;
 
 body {
-    // background: c.$black;
     // @include u.reset-body();
-    // min-height: 100vh;
 
     header {
         height: 60px;
-        background: c.$black;
+        background: c.$paleblue;
         .navbar {
             @include u.flex($justify-content: space-between, $align-items: center);
             min-height: 60px;
