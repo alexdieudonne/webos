@@ -14,9 +14,15 @@ export default class App {
           ${new Header}
           ${new AppBar}
           ${!locked ? new LockScreen : new Body}
-        `;
-        */
+        `;*/
+
+        app.innerHTML = `
+        ${new Header}
+        ${new AppBar}
+        ${new Body}
+      `;
     }
+
 }
 
 function initApp() {
